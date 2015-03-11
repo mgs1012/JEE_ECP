@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pageflow:Pageflow xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:pageflow="http://www.sybase.com/suade/pageflow" id="pf14260662885490" configfile="/Votaciones/src/main/webapp/WEB-INF/faces-config.xml">
+  <nodes xsi:type="pageflow:PFPage" name="jsf/navigator.xhtml" x="122" y="466" id="pf14260663204011" referenceLink="//@navigationRule.0/@navigationCase.4/@toViewId|" outlinks="pf14260663204012 pf14260663204013 pf14260663204014 pf14260663204015 pf14260663204016" inlinks="pf14260663204016" path="/jsf/navigator.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="jsf/rule1Page.xhtml" x="338" y="178" id="pf14260663204017" referenceLink="//@navigationRule.0/@navigationCase.2/@toViewId|" inlinks="pf14260663204012 pf14260663204014" path="/jsf/rule1Page.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="jsf/rule2Page.xhtml" x="338" y="562" id="pf14260663204018" referenceLink="//@navigationRule.0/@navigationCase.1/@toViewId|" inlinks="pf14260663204013" path="/jsf/rule2Page.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="jsf/staticPage.xhtml" x="338" y="946" id="pf14260663204019" referenceLink="//@navigationRule.0/@navigationCase.3/@toViewId|" inlinks="pf14260663204015" path="/jsf/staticPage.xhtml"/>
+  <links id="pf14260663204012" target="pf14260663204017" source="pf14260663204011" outcome="rule1"/>
+  <links id="pf14260663204013" target="pf14260663204018" source="pf14260663204011" outcome="rule2"/>
+  <links id="pf14260663204014" target="pf14260663204017" source="pf14260663204011" outcome="rule2"/>
+  <links id="pf14260663204015" target="pf14260663204019" source="pf14260663204011" outcome="staticPage"/>
+  <links id="pf14260663204016" target="pf14260663204011" source="pf14260663204011">
+    <bendPoints d1Height="-36" d2Height="-36"/>
+    <bendPoints d1Width="-64" d1Height="-36" d2Width="-64" d2Height="-36"/>
+    <bendPoints d1Width="-64" d2Width="-64"/>
+  </links>
+</pageflow:Pageflow>
