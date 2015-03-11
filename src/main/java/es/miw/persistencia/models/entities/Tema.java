@@ -92,6 +92,10 @@ public class Tema {
 	public void setVotos(List<Voto> votos) {
 		this.votos = votos;
 	}
+	
+	public void putVoto(Voto voto){
+		votos.add(voto); 
+	}
     
 	 @Override
 	    public String toString() {
