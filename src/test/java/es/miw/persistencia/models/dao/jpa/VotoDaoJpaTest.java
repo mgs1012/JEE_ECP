@@ -43,14 +43,6 @@ public class VotoDaoJpaTest {
 		votos = new ArrayList<Voto>();
 		votos.add(voto1);
 		votos.add(voto2);
-		
-		/*
-		 * List<VotoE> votos = new ArrayList<VotoE>(); votos.add(new VotoE(001,
-		 * "138.100.152.01", NivelEstudios.MEDIOS, tema)); votos.add(new
-		 * VotoE(002, "138.100.152.02", NivelEstudios.SUPERIORES, tema));
-		 * tema.setVotos(votos);
-		 */
-
 	}
 	
 	@Test
@@ -92,5 +84,4 @@ public class VotoDaoJpaTest {
 	public void after() {
 		JpaFactory.dropAndCreateTables();
 	}
-
 }
