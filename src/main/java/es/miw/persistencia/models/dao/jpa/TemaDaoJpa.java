@@ -10,12 +10,12 @@ import es.miw.persistencia.models.entities.Voto;
 
 public class TemaDaoJpa extends GenericDaoJpa<Tema, Integer> implements TemaDao {
 	
-	@Id
+	/*@Id
     private Integer id;
 	
     private String titulo;
 
-    private String descripcion;
+    private String descripcion;*/
     
 	public TemaDaoJpa() {
 		super(Tema.class);
