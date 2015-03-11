@@ -10,7 +10,4 @@ public class HelloJSFBean {
         return name;
     }
     
-    public String name(){
-    	return name;
-    }
 }
