@@ -29,8 +29,6 @@ public class TemaDaoJpaTest {
 	@Before
 	public void init() {
 		temadao = DaoJpaFactory.getFactory().getTemaDao();
-
-
 		// temadao = DaoFactory.getFactory().getTemaDao();
 		tema = new Tema(1, "Baloncesto",
 				"Tema dedicado a dicha actividad deportiva.",
