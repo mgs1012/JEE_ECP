@@ -1,5 +1,6 @@
 package es.miw.persistencia.models.entities;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -45,12 +46,13 @@ public class Tema {
 
     }
 
-    public Tema(Integer id,String titulo, String descripcion, String pregunta) {
+    public Tema(String titulo, String descripcion, String pregunta) {
         super();
-        this.id = id;
+        //this.id = id;
         this.titulo = titulo;
         this.descripcion = descripcion;
         this.pregunta = pregunta;
+        this.votos = new ArrayList<Voto>();
     }
 
 	public Integer getId() {
@@ -95,6 +97,10 @@ public class Tema {
 	
 	public void putVoto(Voto voto){
 		votos.add(voto); 
+	}
+	
+	public void addListaVotos(List<Voto> listaVotos){
+		this.votos = listaVotos;
 	}
     
 	 @Override
