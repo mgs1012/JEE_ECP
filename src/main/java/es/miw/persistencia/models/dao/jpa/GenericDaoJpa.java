@@ -40,6 +40,7 @@ public class GenericDaoJpa<T, ID> implements GenericDao<T, ID> {
     public T read(ID id) {
         EntityManager entityManager = DaoJpaFactory.getEntityManagerFactory().createEntityManager();
         T entity = entityManager.find(persistentClass, id);
+        System.out.println("Id que llega" + id + ", entidad" + entity);
         entityManager.close();
         return entity;
     }

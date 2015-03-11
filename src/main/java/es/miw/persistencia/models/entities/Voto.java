@@ -75,5 +75,16 @@ public class Voto {
 		public void setNivelEstudios(NivelEstudios nivelEstudios) {
 			this.nivelEstudios = nivelEstudios;
 		}
+		
+		 @Override
+		    public String toString() {
+		        return "Voto [Identificador :" + id + "\n" + "Ip: "+ ip + "\n" + "Nivel de Estudios: "+ nivelEstudios  + "]";
+		    }
+
+		 @Override
+		 public boolean equals(Object obj) {
+			Voto voto = (Voto) obj; 
+			return id.equals(voto.id) && ip.equals(voto.ip) && nivelEstudios.equals(voto.nivelEstudios);
+		}
 
 }
