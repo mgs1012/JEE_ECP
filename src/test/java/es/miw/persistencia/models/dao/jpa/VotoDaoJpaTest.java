@@ -2,6 +2,7 @@ package es.miw.persistencia.models.dao.jpa;
 
 import static org.junit.Assert.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.After;
@@ -12,7 +13,6 @@ import org.junit.Test;
 import es.miw.persistencia.jpa.JpaFactory;
 import es.miw.persistencia.models.daos.DaoFactory;
 import es.miw.persistencia.models.daos.VotoDao;
-import es.miw.persistencia.models.entities.Tema;
 import es.miw.persistencia.models.entities.Voto;
 import es.miw.persistencia.models.utils.NivelEstudios;
 
@@ -30,7 +30,6 @@ public class VotoDaoJpaTest {
 		// Inicializar DAO
 		DaoFactory.setFactory(new DaoJpaFactory());
 		JpaFactory.dropAndCreateTables();
-
 	}
 
 	@Before
@@ -41,7 +40,7 @@ public class VotoDaoJpaTest {
 		voto2 = new Voto(002,"138.100.152.02" , NivelEstudios.MEDIOS);
 		votodao.create(voto1);
 		votodao.create(voto2);
-
+		votos = new ArrayList<Voto>();
 		votos.add(voto1);
 		votos.add(voto2);
 		
@@ -63,6 +62,8 @@ public class VotoDaoJpaTest {
 
 	@Test
 	public void testRead() {
+		System.out.println("Compara: "+voto1);
+		System.out.println(" Con:"+ votodao.read(voto1.getId()));
 		assertEquals(this.voto1, votodao.read(voto1.getId()));
 	}
 
@@ -91,6 +92,5 @@ public class VotoDaoJpaTest {
 	public void after() {
 		JpaFactory.dropAndCreateTables();
 	}
-
 
 }
