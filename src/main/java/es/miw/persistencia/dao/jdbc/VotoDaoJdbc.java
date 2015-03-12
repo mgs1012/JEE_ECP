@@ -53,7 +53,7 @@ public class VotoDaoJdbc extends GenericDaoJdbc<Voto, Integer> implements VotoDa
 	        return this.create(resultSet);
 	    }
 
-	    private static final String SQL_UPDATE = "UPDATE %s SET %s='%s', %s='%s', %s='%s WHERE ID=%d";
+	    private static final String SQL_UPDATE = "UPDATE %s SET %s='%s', %s='%s', %d=%d WHERE ID=%d";
 
 	    @Override
 	    public void update(Voto voto) {
