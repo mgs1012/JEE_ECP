@@ -77,7 +77,7 @@ public class VotoDaoJpaTest {
 
 	@Test
 	public void testFindAll() {
-		assertEquals(2, votodao.findAll().size());
+		assertEquals(votos, votodao.findAll());
 	}
 
 	@After
