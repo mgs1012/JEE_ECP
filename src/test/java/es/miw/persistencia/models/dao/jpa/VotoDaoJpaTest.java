@@ -36,8 +36,8 @@ public class VotoDaoJpaTest {
 	public void init() {
 		votodao = DaoJpaFactory.getFactory().getVotoDao();
 
-		voto1 = new Voto(001,"138.100.152.01" , NivelEstudios.SUPERIORES);
-		voto2 = new Voto(002,"138.100.152.02" , NivelEstudios.MEDIOS);
+		voto1 = new Voto("138.100.152.01" , NivelEstudios.SUPERIORES, 6);
+		voto2 = new Voto("138.100.152.02" , NivelEstudios.MEDIOS, 9);
 		votodao.create(voto1);
 		votodao.create(voto2);
 		votos = new ArrayList<Voto>();
@@ -47,7 +47,7 @@ public class VotoDaoJpaTest {
 	
 	@Test
 	public void testCreate() {
-		Voto voto3 = new Voto(003,"138.100.152.03" , NivelEstudios.BASICOS);
+		Voto voto3 = new Voto("138.100.152.03" , NivelEstudios.BASICOS, 7);
 		votodao.create(voto3);
 		assertEquals(voto3, votodao.read(voto3.getId()));
 	}

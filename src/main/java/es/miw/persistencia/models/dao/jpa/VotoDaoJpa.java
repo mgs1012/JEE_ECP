@@ -22,6 +22,8 @@ public class VotoDaoJpa extends GenericDaoJpa<Voto, Integer> implements VotoDao{
     private String ip;
 
     private NivelEstudios nivelEstudios;
+    
+    private Integer valoracion;
 
     @ManyToOne
     @JoinColumn

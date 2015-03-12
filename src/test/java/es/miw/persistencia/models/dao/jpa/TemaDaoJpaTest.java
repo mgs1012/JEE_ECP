@@ -44,11 +44,10 @@ public class TemaDaoJpaTest {
 		// temadao = DaoFactory.getFactory().getTemaDao();
 		temas = new ArrayList<Tema>();
 		
-		votos = new ArrayList<Voto>();
+		votos = new ArrayList<Voto>();		
 		
-		
-		voto1 = new Voto(004,"138.100.152.04" , NivelEstudios.SUPERIORES);
-		voto2 = new Voto(005,"138.100.152.05" , NivelEstudios.MEDIOS);
+		voto1 = new Voto("138.100.152.04" , NivelEstudios.SUPERIORES, 7);
+		voto2 = new Voto("138.100.152.05" , NivelEstudios.MEDIOS, 9);
 		
 		votos.add(voto1);
 		votos.add(voto2);

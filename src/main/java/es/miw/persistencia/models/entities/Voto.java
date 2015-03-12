@@ -20,6 +20,8 @@ public class Voto {
 
 	    public static final String ID = "ID";
 
+	    //@Generatedvalue -> genera y autoincrementa el valor del id. 
+	    
 	    @Id
 	    @GeneratedValue
 	    @Column(name = ID)
@@ -27,12 +29,18 @@ public class Voto {
 
 	    public static final String IP = "IP";
 
+	    @Column(name = IP)
 	    private String ip;
 	    
 	    public static final String NIVELESTUDIOS = "NIVELESTUDIOS";
 
 	    @Enumerated(EnumType.STRING)
 	    private NivelEstudios nivelEstudios;
+	    
+	    public static final String VALORACION = "VALORACION";
+	    
+	    @Column(name = VALORACION)
+	    private int valoracion;
 
 /*	    public static final String TEMA = "TEMA";
 
@@ -42,14 +50,15 @@ public class Voto {
 	    @JoinColumn(name = TEMA)
 	    private Tema tema;*/
 
-	    public Voto(Integer id, String ip, NivelEstudios nivelEstudios) {
-	        this.id = id;
+	    public Voto(String ip, NivelEstudios nivelEstudios, Integer valoracion) {
+	       // this.id = id;
 	        this.ip = ip;
 	        this.nivelEstudios = nivelEstudios;
+	        this.valoracion = valoracion;
 	        //this.tema = tema; 
 	    }
 
-	    public Voto() {
+		public Voto() {
 	    }
 	    
 	    public Integer getId() {
@@ -74,6 +83,15 @@ public class Voto {
 
 		public void setNivelEstudios(NivelEstudios nivelEstudios) {
 			this.nivelEstudios = nivelEstudios;
+		}
+		
+	    public int getValoracion() {
+			return valoracion;
+		}
+
+		public void setValoracion(int valoracion) {
+			//if(valoracion >= 0 && valoracion <= 10 )
+				this.valoracion = valoracion;
 		}
 		
 		 @Override
