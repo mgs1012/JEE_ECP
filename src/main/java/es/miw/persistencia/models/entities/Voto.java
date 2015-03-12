@@ -40,7 +40,7 @@ public class Voto {
 	    public static final String VALORACION = "VALORACION";
 	    
 	    @Column(name = VALORACION)
-	    private int valoracion;
+	    private Integer valoracion;
 
 /*	    public static final String TEMA = "TEMA";
 
@@ -96,13 +96,13 @@ public class Voto {
 		
 		 @Override
 		    public String toString() {
-		        return "Voto [Identificador :" + id + "\n" + "Ip: "+ ip + "\n" + "Nivel de Estudios: "+ nivelEstudios  + "]";
+		        return "Voto [Identificador :" + id + "\n" + "Ip: "+ ip + "\n" + "Nivel de Estudios: "+ nivelEstudios  + "Valoración: "+ valoracion  + "]";
 		    }
 
 		 @Override
 		 public boolean equals(Object obj) {
 			Voto voto = (Voto) obj; 
-			return id.equals(voto.id) && ip.equals(voto.ip) && nivelEstudios.equals(voto.nivelEstudios);
+			return id.equals(voto.id) && ip.equals(voto.ip) && nivelEstudios.equals(voto.nivelEstudios) && valoracion.equals(voto.valoracion);
 		}
 
 }

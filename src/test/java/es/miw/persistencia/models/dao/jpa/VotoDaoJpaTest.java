@@ -54,8 +54,8 @@ public class VotoDaoJpaTest {
 
 	@Test
 	public void testRead() {
-		System.out.println("Compara: "+voto1);
-		System.out.println(" Con:"+ votodao.read(voto1.getId()));
+		//System.out.println("Compara: "+voto1);
+		//System.out.println(" Con:"+ votodao.read(voto1.getId()));
 		assertEquals(this.voto1, votodao.read(voto1.getId()));
 	}
 
