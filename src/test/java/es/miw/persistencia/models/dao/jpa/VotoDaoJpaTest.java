@@ -63,8 +63,11 @@ public class VotoDaoJpaTest {
 	public void testUpdate() {
 		voto1.setIp("192.100.152.01");;
 		votodao.update(voto1);
+		voto1.setValoracion(5);
+		votodao.update(voto1);
 		Voto voto = votodao.read(voto1.getId());
 		assertEquals(voto.getIp(), "192.100.152.01");
+		assertEquals(voto.getValoracion(), 5);
 	}
 
 	@Test

@@ -89,7 +89,7 @@ public class Voto {
 			return valoracion;
 		}
 
-		public void setValoracion(int valoracion) {
+		public void setValoracion(Integer valoracion) {
 			//if(valoracion >= 0 && valoracion <= 10 )
 				this.valoracion = valoracion;
 		}
