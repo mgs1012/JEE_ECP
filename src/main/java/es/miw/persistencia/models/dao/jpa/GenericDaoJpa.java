@@ -107,5 +107,25 @@ public class GenericDaoJpa<T, ID> implements GenericDao<T, ID> {
         entityManager.close();
         return result;
     }
+    
+	@Override
+	public void removeEntity(T entidad){
+		EntityManager entityManager = DaoJpaFactory.getEntityManagerFactory().createEntityManager();
+        T entity = entityManager.find(persistentClass, entidad);
+        if (entity != null) {
+            try {
+                entityManager.getTransaction().begin();
+                entityManager.remove(entity);
+                entityManager.getTransaction().commit();
+                LogManager.getLogger(GenericDaoJpa.class).debug("delete: " + entity);
+            } catch (Exception e) {
+                LogManager.getLogger(GenericDaoJpa.class).error("delete: " + e);
+                if (entityManager.getTransaction().isActive())
+                    entityManager.getTransaction().rollback();
+            } finally {
+                entityManager.close();
+            }
+        }
+	}
 
 }

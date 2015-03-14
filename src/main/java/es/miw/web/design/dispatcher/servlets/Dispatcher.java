@@ -17,6 +17,8 @@ public class Dispatcher extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
     private static String PATH_ROOT_VIEW = "/jspFiles/";
+    
+    private AddTemaView addTemaView;
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -39,8 +41,8 @@ public class Dispatcher extends HttpServlet {
             view = action;
             break;*/
         case "addTema":
-            AddTemaView addTemaView = new AddTemaView();
-            request.setAttribute(action, addTemaView);
+/*            AddTemaView addTemaView = new AddTemaView();
+            request.setAttribute(action, addTemaView);*/
             view = action;
             break;
     /*    case "removeTema":
@@ -63,13 +65,13 @@ public class Dispatcher extends HttpServlet {
         String action = request.getPathInfo().substring(1);
         String view = "home";
         switch (action) {
-        case "tema":
+        case "addTema":
             Tema tema = new Tema();
             //tema.setId(Integer.valueOf(request.getParameter("id")));
             tema.setTitulo(request.getParameter("titulo"));
             tema.setDescripcion(request.getParameter("descripcion"));
             tema.setPregunta(request.getParameter("pregunta"));
-            AddTemaView addTemaView = new AddTemaView();
+            addTemaView = new AddTemaView();
             addTemaView.setTema(tema);
             request.setAttribute(action, addTemaView);
             view = addTemaView.process();

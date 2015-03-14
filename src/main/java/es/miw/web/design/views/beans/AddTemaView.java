@@ -14,6 +14,7 @@ public class AddTemaView {
     private AddTemaController addController;
 
     public AddTemaView() {
+    	addController = new AddTemaController();
     }
 
     public String getErrorMsg() {
@@ -31,13 +32,13 @@ public class AddTemaView {
 
     public String process() {
         if (this.tema.getTitulo() == "" || this.tema.getPregunta() == "") {
-            this.errorMsg = "No se aceptan temas con nombre o con pregunta vacía.";
-            return "tema";
-        } else {
-            LogManager.getLogger(AddTemaView.class).debug(
-                    "Se accede a la capa de negocio para registrar tema: " + tema);
+            this.errorMsg = "No se aceptan campos vacíos.";
+            return "addTema";
+        } else {     
             //Comunicar con la capa de negocio usando controlador.
-            
+            addController.addTema(tema);
+            LogManager.getLogger(AddTemaView.class).debug(
+                    "Se accede a la capa de negocio para registrar tema: " + tema);   
             
             return "home";
         }

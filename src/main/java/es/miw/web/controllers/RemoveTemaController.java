@@ -5,17 +5,18 @@ import es.miw.persistencia.models.daos.DaoFactory;
 import es.miw.persistencia.models.daos.TemaDao;
 import es.miw.persistencia.models.entities.Tema;
 
-public class AddTemaController {
+public class RemoveTemaController {
 	
 	private TemaDao temaDao;
 	
-	public AddTemaController(){
+	public RemoveTemaController(){
 		DaoFactory.setFactory(new DaoJpaFactory());
-		temaDao = DaoFactory.getFactory().getTemaDao();
+		DaoFactory.getFactory().getTemaDao();	
 	}
 	
-	public void addTema(Tema tema){
-		temaDao.create(tema);
+	public void removeTema(Tema tema){
+		temaDao.removeEntity(tema);
 	}
+	
 
 }

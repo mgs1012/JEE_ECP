@@ -16,16 +16,15 @@
 			Titulo: <input name="titulo" type="text" value="" />
 		</p>
 		<p>
-			Descripción: <input name="nombre" type="text" value="" /></p>
+			Descripción: <input name="descripcion" type="text" value="" /></p>
 		<p>
-			Voto: <input name="votos" type="text" value="" />
-		</p>
+			Pregunta: <input name="pregunta" type="text" value="" /></p>
 		<p>
-			<input type="submit" value="Enviar" />
+			<input type="submit" value="Añadir Tema" />
 		</p>
 	</form>
 	<p>
-		<a href="/home">Volver</a>
+		<a href="home">Volver</a>
 	</p>
 </body>
 </html>
