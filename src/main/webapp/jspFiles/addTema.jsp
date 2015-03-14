@@ -9,23 +9,16 @@
 </head>
 <body>
 	<h2>
-		Vista de <b>Tema</b>
+		<b> Añadir Tema</b>
 	</h2>
-	<c:set var="tView" scope="request" value="${tema}" />
-	<div>${pView.update()}</div>
 	<form action="addTema" method="post">
 		<p>
-			Titulo: <input name="titulo" type="text" value="${tView.tema.titulo}" />
+			Titulo: <input name="titulo" type="text" value="" />
 		</p>
 		<p>
-			Descripción: <input name="nombre" type="text"
-				value="${tView.tema.nombre}" />${tView.errorMsg}</p>
+			Descripción: <input name="nombre" type="text" value="" /></p>
 		<p>
-			Voto: <select name="votos">
-				<c:forEach var="votos" items="${tView.votos}">
-					<option value="${votos}">${votos}</option>
-				</c:forEach>
-			</select>
+			Voto: <input name="votos" type="text" value="" />
 		</p>
 		<p>
 			<input type="submit" value="Enviar" />

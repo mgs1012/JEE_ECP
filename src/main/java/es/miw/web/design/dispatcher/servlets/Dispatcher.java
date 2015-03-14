@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import es.miw.persistencia.models.entities.Tema;
 import es.miw.web.design.views.beans.AddTemaView;
 
-@WebServlet("/jsp")
+@WebServlet("/jsp/*")
 public class Dispatcher extends HttpServlet {
 	
     private static final long serialVersionUID = 1L;
@@ -64,14 +64,15 @@ public class Dispatcher extends HttpServlet {
         String view = "home";
         switch (action) {
         case "tema":
-            Tema tema = new Persona();
-            tema.setId(Integer.valueOf(request.getParameter("id")));
-            tema.setNombre(request.getParameter("nombre"));
-            tema.setRol(request.getParameter("rol"));
-            AddTemaView personaView = new TemaView();
-            personaView.setPersona(persona);
-            request.setAttribute(action, personaView);
-            view = personaView.process();
+            Tema tema = new Tema();
+            //tema.setId(Integer.valueOf(request.getParameter("id")));
+            tema.setTitulo(request.getParameter("titulo"));
+            tema.setDescripcion(request.getParameter("descripcion"));
+            tema.setPregunta(request.getParameter("pregunta"));
+            AddTemaView addTemaView = new AddTemaView();
+            addTemaView.setTema(tema);
+            request.setAttribute(action, addTemaView);
+            view = addTemaView.process();
             break;
         /*case "rol":
             RolView rolView = new RolView();
