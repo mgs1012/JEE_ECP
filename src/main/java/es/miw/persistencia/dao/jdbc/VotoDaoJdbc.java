@@ -32,7 +32,7 @@ public class VotoDaoJdbc extends GenericDaoJdbc<Voto, Integer> implements VotoDa
 	    }
 
 	    private static final String SQL_CREATE_TABLE = "CREATE TABLE %s ( %s VARCHAR(20), "
-	            + "%s VARCHAR(255),%s INT NOT NULL,  PRIMARY KEY (%s))";
+	            + "%s INT NOT NULL, %s INT NOT NULL ,  PRIMARY KEY (%s))";
 
 	    public static String sqlToCreateTable() {
 	        return String.format(SQL_CREATE_TABLE, Voto.TABLE, Voto.IP,

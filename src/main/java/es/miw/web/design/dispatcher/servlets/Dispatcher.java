@@ -1,4 +1,4 @@
-package es.miw.web.design.dispatchers.servlets;
+package es.miw.web.design.dispatcher.servlets;
 
 import java.io.IOException;
 
