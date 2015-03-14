@@ -9,6 +9,7 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 
 @Entity
@@ -36,9 +37,13 @@ public class Tema {
     
     @Column(name = PREGUNTA)
     private String pregunta;
+    
+ public static final String VOTOS = "VOTOS";
+    
 
     // Relacion unidireccional: 1:0..n
     // Tema con lista votos. Votos a parte.
+    //@JoinColumn(name = VOTOS)
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<Voto> votos;
 
