@@ -49,5 +49,11 @@ public class TemaDaoJdbc extends GenericDaoJdbc<Tema, Integer> implements TemaDa
 		return null;
 	}
 
+	@Override
+	public void removeEntity(Tema entity) {
+		// TODO Auto-generated method stub
+		
+	}
+
 
 	}

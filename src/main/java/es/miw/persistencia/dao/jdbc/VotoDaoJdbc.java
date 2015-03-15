@@ -78,4 +78,9 @@ public class VotoDaoJdbc extends GenericDaoJdbc<Voto, Integer> implements VotoDa
 	        }
 	        return list;
 	    }
+
+		@Override
+		public void removeEntity(Voto entity) {
+			this.updateSql(String.format(SQL_DELETE_ENTITY, Voto.TABLE));			
+		}
 }

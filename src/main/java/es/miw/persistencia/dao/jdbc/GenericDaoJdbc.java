@@ -17,6 +17,8 @@ public abstract class GenericDaoJdbc<T, ID> implements GenericDao<T, ID> {
     protected static final String SQL_SELECT_ALL = "SELECT * FROM %s";
 
     protected static final String SQL_DELETE_ID = "DELETE FROM %s WHERE ID=%d";
+    
+    protected static final String SQL_DELETE_ENTITY = "DELETE FROM %s ";
 
     protected static final String SQL_SELECT_LAST_ID = "SELECT LAST_INSERT_ID()";
 
