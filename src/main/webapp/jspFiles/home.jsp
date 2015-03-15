@@ -13,15 +13,12 @@
 	<p>
 		<a href="jsp/verVotaciones">Ver Votaciones</a>
 	</p>
-
 	<p>
 		<a href="jsp/votar">Votar</a>
 	</p>
-
 	<p>
 		<a href="jsp/addTema">Añadir Tema</a>
 	</p>
-
 	<p>
 		<a href="jsp/removeTema">Eliminar Tema</a>
 	</p>
