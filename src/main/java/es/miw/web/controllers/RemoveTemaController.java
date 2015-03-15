@@ -11,7 +11,7 @@ public class RemoveTemaController {
 	
 	public RemoveTemaController(){
 		DaoFactory.setFactory(new DaoJpaFactory());
-		DaoFactory.getFactory().getTemaDao();	
+		temaDao = DaoFactory.getFactory().getTemaDao();	
 	}
 	
 	public void removeTema(Tema tema){
