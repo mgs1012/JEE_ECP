@@ -1,51 +1,70 @@
 package es.miw.web.design.views.beans;
 
+import java.util.List;
+
+import org.apache.logging.log4j.LogManager;
+
+import es.miw.persistencia.models.entities.Tema;
 import es.miw.persistencia.models.entities.Voto;
+import es.miw.web.controllers.VotarController;
 
 public class VotarView {
 	
 	private String errorMsg;
+	
+	private Tema tema;
 
     private Voto voto;
 
-    private String[] roles;
+    private List<Voto> votos;
+    
+    private List<Tema> temas;
+    
+    private VotarController votarController;
 
-    public PersonaView() {
+    public VotarView() {
+    	votarController = new VotarController();
     }
 
     public String getErrorMsg() {
         return errorMsg;
     }
 
-    public Persona getPersona() {
-        return persona;
+    public Tema getTema() {
+        return tema;
     }
 
-    public void setPersona(Persona persona) {
-        this.persona = persona;
+    public void setTema(Tema tema) {
+        this.tema = tema;
     }
 
-    public String[] getRoles() {
-        return roles;
+    public List<Voto> getVotos() {
+        return votos;
     }
 
-    public void setRoles(String[] roles) {
-        this.roles = roles;
+    public void setVotos(List<Voto> votos) {
+        this.votos = votos;
+    }
+    
+    public void setVoto(Voto voto){
+    	this.voto = voto;
     }
 
     public void update() {
-        LogManager.getLogger(PersonaView.class).debug(
-                "Se accede a la capa de negocio para recuperar roles");
-        this.roles = new String[] {"uno", "dos", "tres"};
+    	temas = votarController.getListaTemas();
+    	
+        LogManager.getLogger(VotarView.class).debug(
+                "Se accede a la capa de negocio para recuperar temas.");
     }
 
     public String process() {
-        if (this.persona.getId() == 666 && !this.persona.getNombre().equals("Demonio")) {
+        if (this.tema.getId() == 666 && !this.tema.getTitulo().equals("Demonio")) {
             this.errorMsg = "Sólo se acepta el nombre 'Demonio'";
-            return "persona";
+            return "voto";
         } else {
-            LogManager.getLogger(PersonaView.class).debug(
-                    "Se accede a la capa de negocio para registrar persona: " + persona);
+            LogManager.getLogger(VotarView.class).debug(
+                    "Se accede a la capa de negocio para registrar votacion: " + voto);
             return "home";
         }
     }
+}
