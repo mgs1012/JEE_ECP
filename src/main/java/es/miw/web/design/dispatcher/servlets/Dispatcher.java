@@ -72,9 +72,10 @@ public class Dispatcher extends HttpServlet {
 			HttpServletResponse response) throws ServletException, IOException {
 		String action = request.getPathInfo().substring(1);
 		String view = "home";
+		Tema tema;
 		switch (action) {
 		case "addTema":
-			Tema tema = new Tema();
+			tema = new Tema();
 			// tema.setId(Integer.valueOf(request.getParameter("id")));
 			tema.setTitulo(request.getParameter("titulo"));
 			tema.setDescripcion(request.getParameter("descripcion"));
@@ -85,11 +86,10 @@ public class Dispatcher extends HttpServlet {
 			view = addTemaView.process();
 			break;
 		case "removeTema":
-			Tema tema2 = new Tema();
+			tema = new Tema();
 			// tema.setId(Integer.valueOf(request.getParameter("id")));
-			tema2.getTitulo();
 			removeTemaView = new RemoveTemaView();
-			removeTemaView.setTema(tema2);
+			removeTemaView.getTema();
 			request.setAttribute(action, removeTemaView);
 			view = removeTemaView.process();
 			break;
