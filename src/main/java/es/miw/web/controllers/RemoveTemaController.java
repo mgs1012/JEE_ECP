@@ -18,5 +18,10 @@ public class RemoveTemaController {
 		temaDao.removeEntity(tema);
 	}
 	
+	public void removeTemaById(Tema tema){
+		temaDao.deleteById(tema.getId());
+		
+	}
+	
 
 }

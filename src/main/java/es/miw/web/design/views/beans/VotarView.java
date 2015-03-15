@@ -58,13 +58,11 @@ public class VotarView {
     }
 
     public String process() {
-        if (this.tema.getId() == 666 && !this.tema.getTitulo().equals("Demonio")) {
-            this.errorMsg = "Sólo se acepta el nombre 'Demonio'";
             return "voto";
-        } else {
-            LogManager.getLogger(VotarView.class).debug(
-                    "Se accede a la capa de negocio para registrar votacion: " + voto);
-            return "home";
-        }
+//        } else {
+//            LogManager.getLogger(VotarView.class).debug(
+//                    "Se accede a la capa de negocio para registrar votacion: " + voto);
+//            return "home";
+//        }
     }
 }

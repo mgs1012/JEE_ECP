@@ -9,7 +9,6 @@
 <body>
 
 	<h1>Aplicación para realizar votaciones</h1>
-
 	<p>
 		<a href="jsp/verVotaciones">Ver Votaciones</a>
 	</p>
@@ -20,7 +19,7 @@
 		<a href="jsp/addTema">Añadir Tema</a>
 	</p>
 	<p>
-		<a href="jsp/removeTema">Eliminar Tema</a>
+		<a href="removeTema">Eliminar Tema</a>
 	</p>
 </body>
 </html>
