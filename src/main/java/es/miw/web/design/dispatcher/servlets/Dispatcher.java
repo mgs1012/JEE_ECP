@@ -100,20 +100,17 @@ public class Dispatcher extends HttpServlet {
 			break;
 		case "removeTema":
 			tema = new Tema();
-			// tema.setId(Integer.valueOf(request.getParameter("id")));
 			removeTemaView = new RemoveTemaView();
 			removeTemaView.getTema();
 			request.setAttribute(action, removeTemaView);
 			view = removeTemaView.process();
 			break;
-		case "verVotaciones":
+/*		case "verVotaciones":
 			tema = new Tema();
-			// tema.setId(Integer.valueOf(request.getParameter("id")));
 			verVotosView = new VerVotacionesView();
-
 			request.setAttribute(action, verVotosView);
 			view = verVotosView.process();
-			break;
+			break;*/
 		case "votar":
 			tema = new Tema();
 			voto = new Voto();
