@@ -15,19 +15,13 @@ import es.miw.persistencia.models.utils.NivelEstudios;
 public class VerVotacionesController {
 
 	private TemaDao temaDao;
-
 	private VotoDao votoDao;
 
 	private List<Tema> listaTemas;
-
 	public List<Voto> listaVotos;
 
-	public List<NivelEstudios> listaNivelEstudios;
-
-	private Map<String, Integer> lista = new HashMap<String, Integer>();
-	
-	private Map<NivelEstudios, Double> medias = new HashMap<NivelEstudios, Double>();
-
+	private Map<String, Integer> lista;
+	private Map<NivelEstudios, Double> medias;
 
 	public VerVotacionesController() {
 		DaoFactory.setFactory(new DaoJpaFactory());
@@ -35,8 +29,9 @@ public class VerVotacionesController {
 		votoDao = DaoFactory.getFactory().getVotoDao();
 	}
 
-
 	public Map<String, Integer> obtenerNumeroVotos() {
+
+		lista = new HashMap<String, Integer>();
 
 		listaTemas = temaDao.findAll();
 
@@ -46,38 +41,62 @@ public class VerVotacionesController {
 		return lista;
 	}
 
-	public Map<NivelEstudios, Double> medias(){
-		
+	public Map<NivelEstudios, Double> medias() {
+
+		medias = new HashMap<NivelEstudios, Double>();
+
 		listaVotos = votoDao.findAll();
-		
+
 		double suma_b = 0.0, suma_m = 0.0, suma_s = 0.0, suma_d = 0.0;
 		int numV_b = 0, numV_m = 0, numV_s = 0, numV_d = 0;
-		
-		for(Voto v : listaVotos){
-			switch (v.getNivelEstudios()){
-			
+
+		for (Voto v : listaVotos) {
+			switch (v.getNivelEstudios()) {
+
 			case BASICOS:
 				numV_b++;
-				suma_b = suma_b + v.getValoracion(); 
+				suma_b = suma_b + v.getValoracion();
 				break;
 			case MEDIOS:
-				numV_b++;
-				suma_b = suma_b + v.getValoracion(); 
+				numV_m++;
+				suma_m = suma_m + v.getValoracion();
 				break;
 			case SUPERIORES:
-				numV_b++;
-				suma_b = suma_b + v.getValoracion(); 
+				numV_s++;
+				suma_s = suma_s + v.getValoracion();
 				break;
 			case DOCTORADO:
-				numV_b++;
-				suma_b = suma_b + v.getValoracion(); 
-				break;					
+				numV_d++;
+				suma_d = suma_d + v.getValoracion();
+				break;
 			}
-			medias.put(NivelEstudios.BASICOS, (suma_b/numV_b));
-			medias.put(NivelEstudios.MEDIOS, (suma_m/numV_m));
-			medias.put(NivelEstudios.SUPERIORES, (suma_s/numV_s));
-			medias.put(NivelEstudios.DOCTORADO, (suma_d/numV_d));		
 		}
+		
+		if(numV_b == 0){
+			medias.put(NivelEstudios.BASICOS, 0.0);
+		}
+		else{
+			medias.put(NivelEstudios.BASICOS, (suma_b / numV_b));
+		}
+		if(numV_m == 0){
+			medias.put(NivelEstudios.MEDIOS, 0.0);
+		}
+		else{
+			medias.put(NivelEstudios.MEDIOS, (suma_m / numV_m));
+		}
+		if(numV_m == 0){
+			medias.put(NivelEstudios.SUPERIORES, 0.0);
+		}
+		else{
+			medias.put(NivelEstudios.SUPERIORES, (suma_s / numV_s));
+		}
+		if(numV_b == 0){
+			medias.put(NivelEstudios.DOCTORADO, 0.0);
+		}
+		else{
+			medias.put(NivelEstudios.DOCTORADO, (suma_d / numV_d));
+		}
+		
 		return medias;
 	}
 
