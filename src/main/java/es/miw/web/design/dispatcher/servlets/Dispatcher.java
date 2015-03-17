@@ -48,10 +48,6 @@ public class Dispatcher extends HttpServlet {
 		 * request.setAttribute(action, votacionesView); view = action; break;
 		 */
 		case "addTema":
-			/*
-			 * AddTemaView addTemaView = new AddTemaView();
-			 * request.setAttribute(action, addTemaView);
-			 */
 			view = action;
 			break;
 		case "removeTema":
@@ -61,8 +57,8 @@ public class Dispatcher extends HttpServlet {
 			break;
 		case "verVotaciones":
 			verVotosView = new VerVotacionesView();
+			view = verVotosView.process();
 			request.setAttribute(action, verVotosView);
-			view = action;
 			break;
 		case "votar":
 			votarView = new VotarView();
@@ -114,7 +110,7 @@ public class Dispatcher extends HttpServlet {
 		case "votar":
 			tema = new Tema();
 			voto = new Voto();
-			voto.setIp(request.getParameter("ip"));
+			voto.setIp(request.getRemoteAddr());
 			voto.setNivelEstudios(NivelEstudios.valueOf(request
 					.getParameter("nivelEstudios")));
 			voto.setValoracion(Integer.valueOf(request
@@ -129,6 +125,10 @@ public class Dispatcher extends HttpServlet {
 			request.setAttribute(action, votarView);
 			view = votarView.process();
 			break;
+		/*case "verVotaciones":
+			verVotosView = new VerVotacionesView();
+			request.setAttribute(action, verVotosView);
+			view = verVotosView.process();*/
 
 		/*
 		 * case "rol": RolView rolView = new RolView();

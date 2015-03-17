@@ -10,16 +10,16 @@
 
 	<h1>Aplicación para realizar votaciones</h1>
 	<p>
-		<a href="jsp/verVotaciones">Ver Votaciones</a>
+		<a href="/Votaciones/jsp/verVotaciones">Ver Votaciones</a>
 	</p>
 	<p>
-		<a href="jsp/votar">Votar</a>
+		<a href="/Votaciones/jsp/votar">Votar</a>
 	</p>
 	<p>
-		<a href="jsp/addTema">Añadir Tema</a>
+		<a href="/Votaciones/jsp/addTema">Añadir Tema</a>
 	</p>
 	<p>
-		<a href="removeTema">Eliminar Tema</a>
+		<a href="/Votaciones/jsp/removeTema">Eliminar Tema</a>
 	</p>
 </body>
 </html>

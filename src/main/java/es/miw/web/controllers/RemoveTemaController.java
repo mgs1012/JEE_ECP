@@ -29,6 +29,4 @@ public class RemoveTemaController {
 		return temaDao.findAll();
 	}
 
-	
-
 }

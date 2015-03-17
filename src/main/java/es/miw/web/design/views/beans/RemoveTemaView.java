@@ -12,6 +12,8 @@ import es.miw.web.controllers.RemoveTemaController;
 public class RemoveTemaView {
 
 	private String errorMsg;
+	
+	private int codigo;
 
 	private Tema tema;
 
@@ -54,24 +56,21 @@ public class RemoveTemaView {
 	}
 
 	public String process() {
-		/*if (this.tema.getId() == 666
-				&& !this.tema.getTitulo().equals("Demonio")) {
-			this.errorMsg = "Sólo se acepta el nombre 'Demonio' y su id válido.";
-			return "tema";
-		} else {
+/*		
+		if(this.codigo != 666 ){
+			this.errorMsg = "Código no válido! Inténtelo de nuevo.";
+			return "home";
+		}
+
+		else{*/
 			// Comunicar con la capa de negocio usando controlador.
-			removeController.removeTema(tema);
 			LogManager.getLogger(RemoveTemaView.class).debug(
 					"Se accede a la capa de negocio para eliminar tema seleccionado: "
 							+ tema);
 
-			return "home";
-		}*/
-		LogManager.getLogger(RemoveTemaView.class).debug(
-				"Se accede a la capa de negocio para eliminar tema seleccionado: "
-						+ tema);
+			removeController.removeTema(tema);
+			return "removeTema";
+		/*}*/
 
-		removeController.removeTema(tema);
-		return "home";
 	}
 }
