@@ -1,3 +1,4 @@
+
 <?xml version="1.0" encoding="UTF-8"  ?>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
@@ -6,31 +7,46 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <title>Votar</title>
+
 </head>
 <body>
 	<h2>
 		<b> Votar Tema</b>
 	</h2>
-		<c:set var="tView" scope="request" value="${tema}" />
-	
-	<form action="votar" method="post">
-	<ul>TEMAS:
-			<c:forEach var="tema" items="${tView.temas}">
-				<li>${tema}</li>
-			</c:forEach>
-		</ul>
-	
+	<c:set var="tView" scope="request" value="${votar}" />
+	<div>${tView.update()}</div>
+
+	<form name="formulario" action="/Votaciones/jsp/votar" method="post">
 		<p>
-			Titulo:
+			Tema seleccionado:<label name="nombreDelTema">${tema.titulo}</label>
 		</p>
 		<p>
-			Descripción:
+			Nivel Estudios: <select name="nivelEstudios">
+				<c:forEach var="nivelEstudios" items="${tView.listaNivelEstudios}">
+					<option value="${nivelEstudios}">${nivelEstudios}</option>
+				</c:forEach>
+			</select>
+		</p>
+<!-- 		<p> -->
+<%-- 			<input name="valoracion" type="text" required />${tView.errorMsg} --%>
+<!-- 		</p> -->
+		<p>
+			Valor votación: <select name="valoracion">
+				<option value="0">0</option>
+				<option value="1">1</option>
+				<option value="2">2</option>
+				<option value="3">3</option>
+				<option value="4">4</option>
+				<option value="5">5</option>
+				<option value="6">6</option>
+				<option value="7">7</option>
+				<option value="8">8</option>
+				<option value="9">9</option>
+				<option value="10">10</option>
+			</select>
 		</p>
 		<p>
-			Pregunta:
-		</p>
-		<p>
-			<input type="submit" value="Enviar votación" />
+		<input type="submit" value="Enviar votación" />
 		</p>
 	</form>
 	<p>
