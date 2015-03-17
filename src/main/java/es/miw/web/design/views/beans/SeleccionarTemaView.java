@@ -20,6 +20,8 @@ public class SeleccionarTemaView {
 	
 	private SeleccionarTemaController seleccionarTemaController;
 
+	private List<NivelEstudios> listaNivelEstudios;
+
 
 	public SeleccionarTemaView() {
 		seleccionarTemaController = new SeleccionarTemaController();
@@ -44,6 +46,15 @@ public class SeleccionarTemaView {
 	public void setListaTemas(List<Tema> listaTemas) {
 		this.listaTemas = listaTemas;
 	}
+	
+	public List<NivelEstudios> getListaNivelEstudios() {
+		return listaNivelEstudios;
+	}
+
+	public void setListaNivelEstudios(List<NivelEstudios> listaNivelEstudios) {
+		this.listaNivelEstudios = listaNivelEstudios;
+	}
+
 
 	public void update() {
 
@@ -52,6 +63,13 @@ public class SeleccionarTemaView {
 
 		LogManager.getLogger(VotarView.class).debug(
 				"Se accede a la capa de negocio para recuperar temas.");
+		
+
+		listaNivelEstudios = new ArrayList<NivelEstudios>();
+		listaNivelEstudios.add(NivelEstudios.BASICOS);
+		listaNivelEstudios.add(NivelEstudios.MEDIOS);
+		listaNivelEstudios.add(NivelEstudios.SUPERIORES);
+		listaNivelEstudios.add(NivelEstudios.DOCTORADO);
 
 	}
 
@@ -61,7 +79,6 @@ public class SeleccionarTemaView {
 		LogManager.getLogger(SeleccionarTemaView.class).debug(
 				"Se accede a la capa de negocio para eliminar tema seleccionado: "
 						+ tema);
-		
 		
 		return "votar";
 	}

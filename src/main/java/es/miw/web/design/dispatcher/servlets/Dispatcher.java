@@ -13,6 +13,7 @@ import es.miw.persistencia.models.entities.Voto;
 import es.miw.persistencia.models.utils.NivelEstudios;
 import es.miw.web.design.views.beans.AddTemaView;
 import es.miw.web.design.views.beans.RemoveTemaView;
+import es.miw.web.design.views.beans.SeleccionarTemaView;
 import es.miw.web.design.views.beans.VerVotacionesView;
 import es.miw.web.design.views.beans.VotarView;
 
@@ -30,6 +31,8 @@ public class Dispatcher extends HttpServlet {
 	private VotarView votarView;
 
 	private VerVotacionesView verVotosView;
+	
+	private SeleccionarTemaView seleccionarTemaView;
 
 	@Override
 	protected void doGet(HttpServletRequest request,
@@ -65,6 +68,11 @@ public class Dispatcher extends HttpServlet {
 			request.setAttribute(action, votarView);
 			view = action;
 			break;
+		case "seleccionarTema":
+			seleccionarTemaView = new SeleccionarTemaView();
+			request.setAttribute(action, seleccionarTemaView);
+			view = action;
+			break;		
 		default:
 			view = "home";
 		}
@@ -97,34 +105,39 @@ public class Dispatcher extends HttpServlet {
 		case "removeTema":
 			tema = new Tema();
 			removeTemaView = new RemoveTemaView();
-			removeTemaView.getTema();
+			tema.setId(Integer.parseInt(request.getParameter("nombreDelTema")));
+			removeTemaView.setTema(tema);
+			removeTemaView.setCodigo(Integer.parseInt(request.getParameter("codigo")));
 			request.setAttribute(action, removeTemaView);
 			view = removeTemaView.process();
 			break;
-/*		case "verVotaciones":
-			tema = new Tema();
-			verVotosView = new VerVotacionesView();
-			request.setAttribute(action, verVotosView);
-			view = verVotosView.process();
-			break;*/
+
 		case "votar":
 			tema = new Tema();
 			voto = new Voto();
+			
 			voto.setIp(request.getRemoteAddr());
 			voto.setNivelEstudios(NivelEstudios.valueOf(request
 					.getParameter("nivelEstudios")));
 			voto.setValoracion(Integer.valueOf(request
 					.getParameter("valoracion")));
 			votarView = new VotarView();
-			votarView.setVoto(voto);
-
-			tema.setTitulo(request.getParameter("titulo"));
+			tema.setTitulo(request.getParameter("nombreDelTema"));
 			tema.setPregunta(request.getParameter("pregunta"));
 			votarView.setTema(tema);
-
+			votarView.setVoto(voto);
 			request.setAttribute(action, votarView);
 			view = votarView.process();
 			break;
+		case "seleccionarTema":
+			tema = new Tema();
+			seleccionarTemaView = new SeleccionarTemaView();	
+			tema.setTitulo(request.getParameter("nombreDelTema"));
+			System.out.println("Llega del form: " + request.getParameter("nombreDelTema"));
+			seleccionarTemaView.setTema(tema);
+			request.setAttribute(action, seleccionarTemaView);
+			view = seleccionarTemaView.process();
+			
 		/*case "verVotaciones":
 			verVotosView = new VerVotacionesView();
 			request.setAttribute(action, verVotosView);

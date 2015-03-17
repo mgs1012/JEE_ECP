@@ -87,7 +87,7 @@ public class VotarView {
 	}
 
 	public String process() {
-		
+
 		
 		return "votar";
 		// } else {

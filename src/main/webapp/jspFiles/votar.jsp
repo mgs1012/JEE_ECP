@@ -13,19 +13,19 @@
 	<h2>
 		<b> Votar Tema</b>
 	</h2>
-	<c:set var="tView" scope="request" value="${votar}" />
+	<c:set var="tView" scope="request" value="${seleccionarTema}" />
 	<div>${tView.update()}</div>
 
 	<form name="formulario" action="/Votaciones/jsp/votar" method="post">
 		<p>
-			Tema seleccionado:<label name="nombreDelTema">${tema.titulo}</label>
+			Tema seleccionado:<label name="nombreDelTema">${tView.tema.titulo}</label>
 		</p>
 		<p>
-			Nivel Estudios: <select name="nivelEstudios">
+			 Nivel Estudios: <select name="nivelEstudios">
 				<c:forEach var="nivelEstudios" items="${tView.listaNivelEstudios}">
 					<option value="${nivelEstudios}">${nivelEstudios}</option>
 				</c:forEach>
-			</select>
+			</select> 
 		</p>
 <!-- 		<p> -->
 <%-- 			<input name="valoracion" type="text" required />${tView.errorMsg} --%>
