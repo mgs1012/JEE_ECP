@@ -1,5 +1,7 @@
 package es.miw.persistencia.models.dao.jpa;
 
+import java.util.List;
+
 import es.miw.persistencia.models.daos.TemaDao;
 import es.miw.persistencia.models.entities.Tema;
 
@@ -12,9 +14,10 @@ public class TemaDaoJpa extends GenericDaoJpa<Tema, Integer> implements TemaDao 
 
     private String descripcion;*/
     
+	
 	public TemaDaoJpa() {
 		super(Tema.class);
 	}
-    
+
 
 }
