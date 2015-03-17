@@ -21,12 +21,12 @@
 		<p>
 			Listado de temas:<select name="nombreDelTema">
 				<c:forEach var="temas" items="${tView.listaTemas}">
-					<option value="${temas.titulo}">${temas.titulo}</option>
+					<option value="${temas.id}">${temas.titulo}</option>
 				</c:forEach>
 			</select>
 		</p>
 		<p>
-			Código autenticación: <input name="codigo" type="text"/>${tView.errorMsg}
+			Código autenticación: <input name="codigo" type="text" required/>${tView.errorMsg}
 		</p>
 		<p>
 			<input type="submit" value="Eliminar" />
