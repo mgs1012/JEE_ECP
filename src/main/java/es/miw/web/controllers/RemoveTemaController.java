@@ -1,5 +1,7 @@
 package es.miw.web.controllers;
 
+import java.util.List;
+
 import es.miw.persistencia.models.dao.jpa.DaoJpaFactory;
 import es.miw.persistencia.models.daos.DaoFactory;
 import es.miw.persistencia.models.daos.TemaDao;
@@ -22,6 +24,11 @@ public class RemoveTemaController {
 		temaDao.deleteById(tema.getId());
 		
 	}
+	
+	public List<Tema> getListaTemas(){
+		return temaDao.findAll();
+	}
+
 	
 
 }

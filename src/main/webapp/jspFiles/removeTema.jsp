@@ -13,15 +13,20 @@
 	<h2>
 		<b> Eliminar Tema de la lista</b>
 	</h2>
-	<c:set var="tView" scope="request" value="${tema}" />
+	<c:set var="tView" scope="request" value="${removeTema}" />
 	<div>${tView.update()}</div>
-	<form action="removeTema" method="post">
+
+
+	<form action="/Votaciones/jsp/removeTema" method="post">
 		<p>
-			Titulo: <select name="titulo">
-				<c:forEach var="titulos" items="${tView.titulo}">
-					<option value="${titulo}">${titulo}</option>
+			Listado de temas:<select name="nombreDelTema">
+				<c:forEach var="temas" items="${tView.listaTemas}">
+					<option value="${temas.titulo}">${temas.titulo}</option>
 				</c:forEach>
 			</select>
+		</p>
+		<p>
+			<input type="submit" value="Eliminar" />
 		</p>
 	</form>
 	<p>
