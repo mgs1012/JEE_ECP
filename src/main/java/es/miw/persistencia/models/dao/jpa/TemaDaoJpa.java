@@ -25,7 +25,7 @@ public class TemaDaoJpa extends GenericDaoJpa<Tema, Integer> implements TemaDao 
 	}
 
 	@Override
-	public Tema getTemaByName(String tituloTema) {
+	public Tema getTemaByTitle(String tituloTema) {
 		EntityManager entityManager = DaoJpaFactory.getEntityManagerFactory()
 				.createEntityManager();
 		CriteriaBuilder criteria = entityManager.getCriteriaBuilder();
@@ -35,11 +35,11 @@ public class TemaDaoJpa extends GenericDaoJpa<Tema, Integer> implements TemaDao 
 
 		query.select(root);
 
-		Predicate p1 = criteria.equal(root.get("nombre"), tituloTema);
+		Predicate p1 = criteria.equal(root.get("titulo"), tituloTema);
 		query.where(p1);
 		// Se realiza la query
 		query.select(root).where(p1);
-		System.out.println("Voy a buscar en la columna nombre: " + tituloTema);
+		System.out.println("Buscar en los titulos: " + tituloTema);
 		return entityManager.createQuery(query).getSingleResult();
 	}
 
