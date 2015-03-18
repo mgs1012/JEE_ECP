@@ -6,7 +6,7 @@ public interface TemaDao extends GenericDao<Tema, Integer> {
 
 	Tema getTemaByTitle(String tituloTema);
 	
-	//public void removeTema(String titulo);		
+	public void removeTema(Integer idTema);		
 
 }
 

@@ -70,6 +70,7 @@ public class RemoveTemaView {
 			this.errorMsg = "Código de autenticación no válido! Inténtelo de nuevo.";
 			return "removeTema";
 		} else {
+			
 			removeController.removeTemaById(tema.getId());
 			// Comunicar con la capa de negocio usando controlador.
 			LogManager.getLogger(RemoveTemaView.class).debug(

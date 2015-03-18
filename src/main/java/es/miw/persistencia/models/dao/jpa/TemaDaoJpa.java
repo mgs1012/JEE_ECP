@@ -24,6 +24,7 @@ public class TemaDaoJpa extends GenericDaoJpa<Tema, Integer> implements TemaDao 
 		super(Tema.class);
 	}
 
+
 	@Override
 	public Tema getTemaByTitle(String tituloTema) {
 		EntityManager entityManager = DaoJpaFactory.getEntityManagerFactory()
@@ -42,6 +43,13 @@ public class TemaDaoJpa extends GenericDaoJpa<Tema, Integer> implements TemaDao 
 		return entityManager.createQuery(query).getSingleResult();
 	}
 
+
+	@Override
+	public void removeTema(Integer idTema) {
+		// TODO Auto-generated method stub
+		
+	}
+	
 	/*
 	 * @Override public void removeTema(String titulo) { EntityManager
 	 * entityManager = DaoJpaFactory.getEntityManagerFactory()
