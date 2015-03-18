@@ -21,4 +21,7 @@ private TemaDao temaDao;
 
 	}
 
+	public Tema getTemaByTitle(String tituloTema){
+		return temaDao.getTemaByTitle(tituloTema);
+	}
 }

@@ -37,6 +37,8 @@ public class Dispatcher extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
+		
+		request.setCharacterEncoding("UTF-8");
 
 		String action = request.getPathInfo().substring(1);
 
@@ -86,6 +88,8 @@ public class Dispatcher extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
+		request.setCharacterEncoding("UTF-8");
+		
 		String action = request.getPathInfo().substring(1);
 		String view = "home";
 		Tema tema;
@@ -117,6 +121,7 @@ public class Dispatcher extends HttpServlet {
 			voto = new Voto();
 			
 			voto.setIp(request.getRemoteAddr());
+			System.out.println("IP:" + request.getRemoteAddr());
 			voto.setNivelEstudios(NivelEstudios.valueOf(request
 					.getParameter("nivelEstudios")));
 			voto.setValoracion(Integer.valueOf(request
@@ -133,10 +138,12 @@ public class Dispatcher extends HttpServlet {
 			tema = new Tema();
 			seleccionarTemaView = new SeleccionarTemaView();	
 			tema.setTitulo(request.getParameter("nombreDelTema"));
-			System.out.println("Llega del form: " + request.getParameter("nombreDelTema"));
+			System.out.println("Llega del form: " + request.getParameter("nombreDelTema"));	
 			seleccionarTemaView.setTema(tema);
-			request.setAttribute(action, seleccionarTemaView);
 			view = seleccionarTemaView.process();
+			request.setAttribute(action, seleccionarTemaView);
+			break;
+			
 			
 		/*case "verVotaciones":
 			verVotosView = new VerVotacionesView();

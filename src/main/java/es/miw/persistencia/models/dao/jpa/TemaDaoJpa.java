@@ -32,14 +32,13 @@ public class TemaDaoJpa extends GenericDaoJpa<Tema, Integer> implements TemaDao 
 		CriteriaQuery<Tema> query = criteria.createQuery(Tema.class);
 
 		Root<Tema> root = query.from(Tema.class);
-
 		query.select(root);
 
-		Predicate p1 = criteria.equal(root.get("titulo"), tituloTema);
-		query.where(p1);
-		// Se realiza la query
-		query.select(root).where(p1);
-		System.out.println("Buscar en los titulos: " + tituloTema);
+		Predicate predicate1 = criteria.equal(root.get("titulo"), tituloTema);
+		query.where(predicate1);
+		// query ejecutar
+		query.select(root).where(predicate1);
+		//System.out.println("Buscar en los titulos: " + tituloTema);
 		return entityManager.createQuery(query).getSingleResult();
 	}
 

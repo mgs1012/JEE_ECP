@@ -18,7 +18,9 @@
 
 	<form name="formulario" action="/Votaciones/jsp/votar" method="post">
 		<p>
-			Tema seleccionado:<label name="nombreDelTema">${tView.tema.titulo}</label>
+			Tema seleccionado:<input name="nombreDelTema" type="text" value="${tView.tema.titulo}" hidden/>${tView.tema.titulo}<br/>
+			Pregunta: <input name="pregunta" type="text" value="${tView.tema.pregunta}" hidden />${tView.tema.pregunta}
+
 		</p>
 		<p>
 			 Nivel Estudios: <select name="nivelEstudios">

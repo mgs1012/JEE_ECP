@@ -74,11 +74,13 @@ public class SeleccionarTemaView {
 	}
 
 	public String process() {
-		//seleccionarTemaController
+
 		// Comunicar con la capa de negocio usando controlador.
 		LogManager.getLogger(SeleccionarTemaView.class).debug(
 				"Se accede a la capa de negocio para eliminar tema seleccionado: "
 						+ tema);
+		
+		tema = seleccionarTemaController.getTemaByTitle(tema.getTitulo());
 		
 		return "votar";
 	}

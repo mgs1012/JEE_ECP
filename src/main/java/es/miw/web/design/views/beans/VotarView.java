@@ -70,26 +70,11 @@ public class VotarView {
 		this.listaTemas = listaTemas;
 	}
 
-	public void update() {
-
-		listaTemas = new ArrayList<Tema>();
-		listaTemas = votarController.getListaTemas();
-
-		LogManager.getLogger(VotarView.class).debug(
-				"Se accede a la capa de negocio para recuperar temas.");
-
-		listaNivelEstudios = new ArrayList<NivelEstudios>();
-		listaNivelEstudios.add(NivelEstudios.BASICOS);
-		listaNivelEstudios.add(NivelEstudios.MEDIOS);
-		listaNivelEstudios.add(NivelEstudios.SUPERIORES);
-		listaNivelEstudios.add(NivelEstudios.DOCTORADO);
-		
-	}
-
 	public String process() {
-
 		
-		return "votar";
+		votarController.guardarVotacion(voto, tema.getTitulo());
+
+		return "home";
 		// } else {
 		// LogManager.getLogger(VotarView.class).debug(
 		// "Se accede a la capa de negocio para registrar votacion: " + voto);
