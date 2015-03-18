@@ -43,12 +43,6 @@ public class TemaDaoJpa extends GenericDaoJpa<Tema, Integer> implements TemaDao 
 		return entityManager.createQuery(query).getSingleResult();
 	}
 
-
-	@Override
-	public void removeTema(Integer idTema) {
-		// TODO Auto-generated method stub
-		
-	}
 	
 	/*
 	 * @Override public void removeTema(String titulo) { EntityManager
