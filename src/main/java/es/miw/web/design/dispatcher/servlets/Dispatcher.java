@@ -143,8 +143,7 @@ public class Dispatcher extends HttpServlet {
 			view = seleccionarTemaView.process();
 			request.setAttribute(action, seleccionarTemaView);
 			break;
-			
-			
+					
 		/*case "verVotaciones":
 			verVotosView = new VerVotacionesView();
 			request.setAttribute(action, verVotosView);
