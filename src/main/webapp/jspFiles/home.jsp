@@ -13,7 +13,7 @@
 		<a href="/Votaciones/jsp/verVotaciones">Ver Votaciones</a>
 	</p>
 	<p>
-		<a href="/Votaciones/jsp/votar">Votar</a>
+		<a href="/Votaciones/jsp/seleccionarTema">Votar</a>
 	</p>
 	<p>
 		<a href="/Votaciones/jsp/addTema">Añadir Tema</a>
