@@ -3,13 +3,15 @@ package es.miw.web.design.views.beans;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.faces.bean.ManagedBean;
+
 import org.apache.logging.log4j.LogManager;
 
 import es.miw.persistencia.models.entities.Tema;
-import es.miw.persistencia.models.entities.Voto;
 import es.miw.persistencia.models.utils.NivelEstudios;
 import es.miw.web.controllers.SeleccionarTemaController;
 
+@ManagedBean
 public class SeleccionarTemaView {
 	
 	private String errorMsg;

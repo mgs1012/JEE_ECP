@@ -3,11 +3,14 @@ package es.miw.web.design.views.beans;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.faces.bean.ManagedBean;
+
 import org.apache.logging.log4j.LogManager;
 
 import es.miw.persistencia.models.entities.Tema;
 import es.miw.web.controllers.RemoveTemaController;
 
+@ManagedBean
 public class RemoveTemaView {
 
 	private String errorMsg;

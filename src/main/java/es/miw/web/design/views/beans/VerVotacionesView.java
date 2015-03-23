@@ -2,11 +2,14 @@ package es.miw.web.design.views.beans;
 
 import java.util.Map;
 
+import javax.faces.bean.ManagedBean;
+
 import org.apache.logging.log4j.LogManager;
 
 import es.miw.persistencia.models.utils.NivelEstudios;
 import es.miw.web.controllers.VerVotacionesController;
 
+@ManagedBean
 public class VerVotacionesView {
 
 	private String errorMsg;
