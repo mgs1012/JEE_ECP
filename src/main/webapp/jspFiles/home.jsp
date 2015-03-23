@@ -7,7 +7,6 @@
 <title>Votaciones</title>
 </head>
 <body>
-
 	<h1>Aplicación para realizar votaciones</h1>
 	<p>
 		<a href="/Votaciones/jsp/verVotaciones">Ver Votaciones</a>
