@@ -5,35 +5,39 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core">
 <h:head>
-	<f:view locale="#{i18n.locale}"></f:view>
 	<title>#{msgs.delete}</title>
 </h:head>
 <h:body>
 	<h2>
 		<b>#{msgs.delete}</b>
 	</h2>
-	<f:event listener=" ${removeTemaView.update()"
-		type="preRenderedComponent"></f:event>
+	<f:event listener="#{removeTemaView.update()}"
+		type="preRenderComponent"></f:event>
 
-	<form action="#{removeTemaView.process}" method="post">
-		<p>
-			Listado de temas:<select name="nombreDelTema">
-				<h:selectOneMenu value="removeTemaView.listaTemas">
-					<f:selectItems value="removeTemaView.listaTemas" var="titulo"
-						itemLabel="#{titulo}" itemValue="#{titulo.id}"></f:selectItems>
+	<h:form>
+		<h:panelGrid >
+			<p>
+				#{msgs.listado}
+				<h:selectOneMenu value="#{removeTemaView.tema.titulo}">
+					<f:selectItems value="#{removeTemaView.listaTemas}"
+						var="nombreDelTema" itemLabel="#{nombreDelTema.titulo}"
+						itemValue="#{tema.id}" />
 				</h:selectOneMenu>
-		</p>
-		<p>
-			Código autenticación:
-			<h:inputText name="codigo" type="text" required />
-			${tView.errorMsg}
-		</p>
-		<p>
-			<h:commandButton type="submit" value="#{msgs.delete}" />
-		</p>
-	</form>
+			</p>
+			<p>
+				#{msgs.codigo}
+				<h:inputText id="codigo" value="#{removeTemaView.codigo}" required="required"/>
+				<h:outputText  rendered="#{removeTemaView.codigo!='666'}">#{removeTemaView.errorMsg}</h:outputText>
+				
+			</p>
+			<p>
+				<h:commandButton type="submit" value="#{msgs.delete}"
+					action="#{removeTemaView.process}" />
+			</p>
+		</h:panelGrid>
+	</h:form>
 	<p>
 		<h:link outcome="home" value="#{msgs.volver}"></h:link>
 	</p>
 </h:body>
-</h:html>
+</html>

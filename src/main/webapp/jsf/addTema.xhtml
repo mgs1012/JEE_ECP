@@ -25,7 +25,7 @@
 				<h:inputText id="pregunta" type="text" value="#{addTemaView.tema.pregunta}" />
 			</p>
 			<p>
-				<h:commandButton type="submit" value="#{msgs.add}" />
+				<h:commandButton type="submit" value="#{msgs.add}" action="#{addTemaView.process}" />
 			</p>
 		</h:panelGroup>
 	</h:form>
