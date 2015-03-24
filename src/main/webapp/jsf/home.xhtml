@@ -1,23 +1,26 @@
-
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Votaciones</title>
-</head>
-<body>
-	<h1>Aplicación para realizar votaciones</h1>
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"        
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+<h:head>
+	<f:view locale="#{i18n.locale}"></f:view>
+	<title>#{msgs.app}</title>
+</h:head>
+<h:body>
+	<h1>#{msgs.app}</h1>
 	<p>
-		<a href="/Votaciones/jsf/verVotaciones">Ver Votaciones</a>
+		<h:button outcome="verVotaciones" value="#{msgs.ver}"></h:button>
 	</p>
 	<p>
-		<a href="/Votaciones/jsf/seleccionarTema">Votar</a>
+		<h:button outcome="seleccionarTema" value="#{msgs.votar}"></h:button>
 	</p>
 	<p>
-		<a href="/Votaciones/jsf/addTema">Añadir Tema</a>
+		<h:button outcome="addTema" value="#{msgs.add}" ></h:button>
 	</p>
 	<p>
-		<a href="/Votaciones/jsf/removeTema">Eliminar Tema</a>
+		<h:button outcome="removeTema" value="#{msgs.delete}"></h:button>
 	</p>
-</body>
+</h:body>
 </html>
