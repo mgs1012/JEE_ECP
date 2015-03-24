@@ -2,13 +2,38 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"        
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-    xmlns:h="http://java.sun.com/jsf/html"
-    xmlns:f="http://java.sun.com/jsf/core">
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
 <h:head>
-    <title>Eliminar Tema</title>
+	<f:view locale="#{i18n.locale}"></f:view>
+	<title>#{msgs.delete}</title>
 </h:head>
 <h:body>
-    <h1>JSF</h1>
-    <p>#{helloJSFBean.name}</p>
+	<h2>
+		<b>#{msgs.delete}</b>
+	</h2>
+	<f:event listener=" ${removeTemaView.update()"
+		type="preRenderedComponent"></f:event>
+
+	<form action="#{removeTemaView.process}" method="post">
+		<p>
+			Listado de temas:<select name="nombreDelTema">
+				<h:selectOneMenu value="removeTemaView.listaTemas">
+					<f:selectItems value="removeTemaView.listaTemas" var="titulo"
+						itemLabel="#{titulo}" itemValue="#{titulo.id}"></f:selectItems>
+				</h:selectOneMenu>
+		</p>
+		<p>
+			Código autenticación:
+			<h:inputText name="codigo" type="text" required />
+			${tView.errorMsg}
+		</p>
+		<p>
+			<h:commandButton type="submit" value="#{msgs.delete}" />
+		</p>
+	</form>
+	<p>
+		<h:link outcome="home" value="#{msgs.volver}"></h:link>
+	</p>
 </h:body>
-</html>
+</h:html>

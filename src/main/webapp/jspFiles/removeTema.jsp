@@ -9,7 +9,6 @@
 <title>Eliminar Tema</title>
 </head>
 <body>
-<body>
 	<h2>
 		<b> Eliminar Tema de la lista</b>
 	</h2>
