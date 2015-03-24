@@ -25,6 +25,10 @@ public class RemoveTemaView {
 
 	public RemoveTemaView() {
 		removeController = new RemoveTemaController();
+		tema = new Tema();
+		listaTemas = new ArrayList<Tema>();
+		listaTemas = removeController.getListaTemas();
+
 	}
 
 	public String getErrorMsg() {
@@ -71,10 +75,15 @@ public class RemoveTemaView {
 
 		if (this.codigo != 666){
 			this.errorMsg = "Código de autenticación no válido! Inténtelo de nuevo.";
+			System.out.println("ENTRA PROCESS ERROR");
+			System.out.println(this.codigo);
 			return "removeTema";
 		} else {
 			
 			removeController.removeTemaById(tema.getId());
+			System.out.println(this.codigo);
+			System.out.println(tema.getTitulo() + "," + tema.getId());
+
 			// Comunicar con la capa de negocio usando controlador.
 			LogManager.getLogger(RemoveTemaView.class).debug(
 					"Se accede a la capa de negocio para eliminar tema seleccionado: "

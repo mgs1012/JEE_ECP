@@ -18,6 +18,8 @@ public class AddTemaView {
 
     public AddTemaView() {
     	addController = new AddTemaController();
+		tema = new Tema();
+
     }
 
     public String getErrorMsg() {
