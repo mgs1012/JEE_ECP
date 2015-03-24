@@ -1,14 +1,36 @@
-<?xml version="1.0" encoding="ISO-8859-1"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"        
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-    xmlns:h="http://java.sun.com/jsf/html"
-    xmlns:f="http://java.sun.com/jsf/core">
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
 <h:head>
-    <title>Añadir Tema</title>
+	<f:view locale="#{i18n.locale}"></f:view>
+	<title>#{msgs.add}</title>
 </h:head>
 <h:body>
-    <h1>JSF</h1>
-    <p>#{helloJSFBean.name}</p>
+	<h1>#{msgs.add}</h1>
+	<h:form action="addTema" method="post">
+		<h:panelGroup>
+			<p>
+				#{msgs.titulo}
+				<h:input name="titulo" type="text" value="" />
+			</p>
+			<p>
+				#{msgs.descripcion}
+				<h:input name="descripcion" type="text" value="" />
+			</p>
+			<p>
+				#{msgs.pregunta}
+				<h:input name="pregunta" type="text" value="" />
+			</p>
+			<p>
+				<input type="submit" value="AÃ±adir Tema" />
+			</p>
+		</h:panelGroup>
+	</h:form>
+	<p>
+		<h:link outcome="home" value="#{msgs.volver}"></a>
+	</p>
 </h:body>
 </html>
