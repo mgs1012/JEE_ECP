@@ -10,27 +10,27 @@
 </h:head>
 <h:body>
 	<h1>#{msgs.add}</h1>
-	<h:form action="addTema" method="post">
+	<h:form action="#{addTemaView.process}" method="post">
 		<h:panelGroup>
 			<p>
 				#{msgs.titulo}
-				<h:input name="titulo" type="text" value="" />
+				<h:inputText id="titulo" value="#{addTemaView.tema.titulo}" />
 			</p>
 			<p>
 				#{msgs.descripcion}
-				<h:input name="descripcion" type="text" value="" />
+				<h:inputText id="descripcion" value="#{addTemaView.tema.descripcion}" />
 			</p>
 			<p>
 				#{msgs.pregunta}
-				<h:input name="pregunta" type="text" value="" />
+				<h:inputText id="pregunta" type="text" value="#{addTemaView.tema.pregunta}" />
 			</p>
 			<p>
-				<input type="submit" value="Añadir Tema" />
+				<h:commandButton type="submit" value="#{msgs.add}" />
 			</p>
 		</h:panelGroup>
 	</h:form>
 	<p>
-		<h:link outcome="home" value="#{msgs.volver}"></a>
+		<h:link outcome="home" value="#{msgs.volver}"></h:link>
 	</p>
 </h:body>
 </html>
