@@ -76,11 +76,12 @@ public class RemoveTemaView {
 		if (this.codigo != 666){
 			this.errorMsg = "Código de autenticación no válido! Inténtelo de nuevo.";
 			System.out.println("ENTRA PROCESS ERROR");
-			System.out.println(this.codigo);
+			System.out.println("cod erroneo :" + this.codigo);
 			return "removeTema";
 		} else {
 			
 			removeController.removeTemaById(tema.getId());
+			System.out.println("El tema " + tema.getTitulo() + "tiene id:" + tema.getId());
 			System.out.println(this.codigo);
 			System.out.println(tema.getTitulo() + "," + tema.getId());
 
