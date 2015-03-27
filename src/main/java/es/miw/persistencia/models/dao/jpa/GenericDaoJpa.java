@@ -40,7 +40,7 @@ public class GenericDaoJpa<T, ID> implements GenericDao<T, ID> {
     public T read(ID id) {
         EntityManager entityManager = DaoJpaFactory.getEntityManagerFactory().createEntityManager();
         T entity = entityManager.find(persistentClass, id);
-        System.out.println("Id que llega" + id + ", entidad" + entity);
+        System.out.println("Id recogido" + id + ", entidad recogida" + entity);
         entityManager.close();
         return entity;
     }
@@ -73,9 +73,9 @@ public class GenericDaoJpa<T, ID> implements GenericDao<T, ID> {
                 entityManager.getTransaction().begin();
                 entityManager.remove(entity);
                 entityManager.getTransaction().commit();
-                LogManager.getLogger(GenericDaoJpa.class).debug("delete: " + entity);
-            } catch (Exception e) {
-                LogManager.getLogger(GenericDaoJpa.class).error("delete: " + e);
+                LogManager.getLogger(GenericDaoJpa.class).debug("Eliminar:  " + entity);
+            } catch (Exception exception) {
+                LogManager.getLogger(GenericDaoJpa.class).error("Eliminar: " + exception);
                 if (entityManager.getTransaction().isActive())
                     entityManager.getTransaction().rollback();
             } finally {

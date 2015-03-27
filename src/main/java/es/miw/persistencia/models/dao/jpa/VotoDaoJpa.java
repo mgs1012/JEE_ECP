@@ -1,38 +1,23 @@
 package es.miw.persistencia.models.dao.jpa;
 
-import java.util.List;
-
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-
+import es.miw.persistencia.models.daos.DaoFactory;
+import es.miw.persistencia.models.daos.TemaDao;
 import es.miw.persistencia.models.daos.VotoDao;
-import es.miw.persistencia.models.entities.Tema;
 import es.miw.persistencia.models.entities.Voto;
-import es.miw.persistencia.models.utils.NivelEstudios;
 
 public class VotoDaoJpa extends GenericDaoJpa<Voto, Integer> implements VotoDao{
 	
-
-	@Id
-    @GeneratedValue
-    private Integer id;
-
-    private String ip;
-
-    private NivelEstudios nivelEstudios;
-    
-    private Integer valoracion;
-
-    @ManyToOne
-    @JoinColumn
-    private Tema tema;
+	TemaDao temaDao;
     
 	public VotoDaoJpa() {
 		super(Voto.class);
 	}
 
+	public void deleteById(int id){
+		DaoFactory.setFactory(new DaoJpaFactory());
+		temaDao = DaoFactory.getFactory().getTemaDao();
+		temaDao.deleteById(id);
+	}
 
 
 }
