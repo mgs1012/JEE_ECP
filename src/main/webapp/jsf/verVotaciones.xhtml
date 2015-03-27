@@ -2,13 +2,38 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"        
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-    xmlns:h="http://java.sun.com/jsf/html"
-    xmlns:f="http://java.sun.com/jsf/core">
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
 <h:head>
-    <title>Visualizar Votaciones</title>
+	<title>#{msgs.visualizar}</title>
 </h:head>
 <h:body>
-    <h1>JSF</h1>
-    <p>#{helloJSFBean.name}</p>
+	<h2>
+		<b>#{msgs.info}</b>
+	</h2>
+	<p>
+		<c:forEach var="lista" items="${verVotaciones.numVotosTema}">
+				#{msgs.titulo} <c:out value="${lista.key}" />
+			<br />
+				#{msgs.numVotos} <c:out value="${lista.value}" />
+			<br />
+			<br />
+		</c:forEach>
+	</p>
+	<p>
+		<c:forEach var="medias" items="${verVotaciones.mediasVotos}">
+				#{msgs.tipo} <c:out value="${medias.key}" />
+			<br />
+				#{msgs.media} <c:out value="${medias.value}" />
+			<br />
+			<br />
+		</c:forEach>
+	</p>
+
+	<p>
+		<h:link outcome="home" value="#{msgs.volver}"></h:link>
+	</p>
+
+	</body>
 </h:body>
 </html>
