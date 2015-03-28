@@ -3,7 +3,9 @@
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:f="http://java.sun.com/jsf/core">
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:c="http://java.sun.com/jsp/jstl/core">
 <h:head>
 	<title>#{msgs.visualizar}</title>
 </h:head>
@@ -11,29 +13,41 @@
 	<h2>
 		<b>#{msgs.info}</b>
 	</h2>
-	<p>
-		<c:forEach var="lista" items="${verVotaciones.numVotosTema}">
-				#{msgs.titulo} <c:out value="${lista.key}" />
-			<br />
-				#{msgs.numVotos} <c:out value="${lista.value}" />
-			<br />
-			<br />
-		</c:forEach>
-	</p>
-	<p>
-		<c:forEach var="medias" items="${verVotaciones.mediasVotos}">
-				#{msgs.tipo} <c:out value="${medias.key}" />
-			<br />
-				#{msgs.media} <c:out value="${medias.value}" />
-			<br />
-			<br />
-		</c:forEach>
-	</p>
+	<f:event listener="#{verVotacionesView.update()}"
+		type="preRenderComponent"></f:event>
+	<h:panelGrid>
+
+		<p>
+			<h:dataTable
+				value="#{verVotacionesView.numVotosTema.entrySet().toArray()}"
+				var="lista">
+				<h:column>
+					#{msgs.titulo}<h:outputText value="#{lista.key}"></h:outputText>
+				</h:column>
+				<h:column>
+					#{msgs.numVotos}<h:outputText value="#{lista.value}"></h:outputText>
+				</h:column>
+			</h:dataTable>
+		</p>
+	</h:panelGrid>
+	<h:panelGrid>
+
+		<p>
+			<h:dataTable
+				value="#{verVotacionesView.mediasVotos.entrySet().toArray()}"
+				var="lista">
+				<h:column>
+					#{msgs.tipo}<h:outputText value="#{lista.key}"></h:outputText>
+				</h:column>
+				<h:column>
+					#{msgs.media}<h:outputText value="#{lista.value}"></h:outputText>
+				</h:column>
+			</h:dataTable>
+		</p>
+	</h:panelGrid>
 
 	<p>
 		<h:link outcome="home" value="#{msgs.volver}"></h:link>
 	</p>
-
-	</body>
 </h:body>
 </html>
