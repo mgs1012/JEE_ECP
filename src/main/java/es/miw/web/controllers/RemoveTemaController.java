@@ -10,28 +10,37 @@ import es.miw.persistencia.models.entities.Tema;
 import es.miw.persistencia.models.entities.Voto;
 
 public class RemoveTemaController {
-	
+
 	private TemaDao temaDao;
-	
+
 	private VotoDao votoDao;
-	
-	public RemoveTemaController(){
+
+	public RemoveTemaController() {
 		DaoFactory.setFactory(new DaoJpaFactory());
-		temaDao = DaoFactory.getFactory().getTemaDao();	
+		temaDao = DaoFactory.getFactory().getTemaDao();
 	}
-	
-	public void removeTema(Tema tema){
+
+	public void removeTema(Tema tema) {
 		temaDao.removeEntity(tema);
 	}
-	
-	public void removeTemaById(int id){
+
+	public void removeTemaById(int id) {
+
+		if (temaDao.read(id).getVotos() != null) {
+			for (Voto v : temaDao.read(id).getVotos()) {
+				votoDao.deleteById(v.getId());
+			}
+		}
+		
 		temaDao.deleteById(id);
-		for(Voto v : temaDao.read(id).getVotos() ){
-			votoDao.deleteById(v.getId());
-		}		
 	}
 	
-	public List<Tema> getListaTemas(){
+	public Tema encontrarTemaById(int id){
+		return temaDao.read(id);
+		
+	}
+
+	public List<Tema> getListaTemas() {
 		return temaDao.findAll();
 	}
 

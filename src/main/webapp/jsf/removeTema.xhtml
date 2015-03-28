@@ -18,23 +18,21 @@
 		<h:panelGrid>
 			<p>
 				#{msgs.listado}
-				<h:selectOneMenu value="#{removeTemaView.tema.titulo}">
+				<h:selectOneMenu value="#{removeTemaView.tema.id}">
 					<f:selectItems value="#{removeTemaView.listaTemas}"
 						var="nombreDelTema" itemLabel="#{nombreDelTema.titulo}"
-						itemValue="#{tema.id}" />
+						itemValue="#{nombreDelTema.id}" />
 				</h:selectOneMenu>
 			</p>
 			<p>
 				#{msgs.codigo}
-				<h:inputText id="codigo" value="#{removeTemaView.codigo}"
-					required="required" />
-				<h:outputText rendered="#{removeTemaView.codigo!='666'}">#{removeTemaView.errorMsg}</h:outputText>
+				<h:inputText id="codigo" value="#{removeTemaView.codigo}" required="true"/>
+				<h:outputText value="#{removeTemaView.errorMsg}" style="color:red" ></h:outputText>
 
 			</p>
 			<p>
 				<h:commandButton type="submit" value="#{msgs.delete}"
 					action="#{removeTemaView.process}">
-					<f:param name="id" value=""></f:param>
 				</h:commandButton>
 			</p>
 		</h:panelGrid>

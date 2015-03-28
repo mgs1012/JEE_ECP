@@ -4,18 +4,22 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
 
 import org.apache.logging.log4j.LogManager;
 
 import es.miw.persistencia.models.entities.Tema;
 import es.miw.web.controllers.RemoveTemaController;
 
+@SessionScoped
 @ManagedBean
 public class RemoveTemaView {
 
 	private String errorMsg;
 
 	private int codigo;
+	
+	private static final int CODIGO_AUTORIZACION = 666;
 
 	private Tema tema;
 
@@ -73,22 +77,17 @@ public class RemoveTemaView {
 
 	public String process() {
 
-		if (this.codigo != 666){
+		if (this.codigo != CODIGO_AUTORIZACION){
 			this.errorMsg = "Código de autenticación no válido! Inténtelo de nuevo.";
 			System.out.println("ENTRA PROCESS ERROR");
+			System.out.println("El tema " + tema.getTitulo() + "tiene id:" + tema.getId());
+			
 			System.out.println("cod erroneo :" + this.codigo);
 			return "removeTema";
 		} else {
-			
-			removeController.removeTemaById(tema.getId());
 			System.out.println("El tema " + tema.getTitulo() + "tiene id:" + tema.getId());
-			System.out.println(this.codigo);
-			System.out.println(tema.getTitulo() + "," + tema.getId());
 
-			// Comunicar con la capa de negocio usando controlador.
-			LogManager.getLogger(RemoveTemaView.class).debug(
-					"Se accede a la capa de negocio para eliminar tema seleccionado: "
-							+ tema);
+			removeController.removeTemaById(tema.getId());
 			return "home";
 		}
 	}
