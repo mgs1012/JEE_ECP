@@ -25,7 +25,7 @@
 			</select>
 		</p>
 		<p>
-			Código autenticación: <input name="codigo" type="text" required/>${tView.errorMsg}
+			Código autenticación: <input name="codigo" type="text" style="color:red" required/>${tView.errorMsg}
 		</p>
 		<p>
 			<input type="submit" value="Eliminar" />

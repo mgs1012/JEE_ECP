@@ -3,35 +3,44 @@ package es.miw.web.design.views.beans;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
 import javax.faces.bean.SessionScoped;
 
-import org.apache.logging.log4j.LogManager;
-
 import es.miw.persistencia.models.entities.Tema;
+import es.miw.persistencia.models.entities.Voto;
 import es.miw.persistencia.models.utils.NivelEstudios;
 import es.miw.web.controllers.SeleccionarTemaController;
+import es.miw.web.controllers.VotarController;
 
 @ManagedBean
 @SessionScoped
-public class SeleccionarTemaView {
+public class VotarTemaView {
 
 	private String errorMsg;
 
 	private Tema tema;
 
+	private Voto voto;
+
 	private List<Tema> listaTemas;
 
 	private SeleccionarTemaController seleccionarTemaController;
 
+	private VotarController votarController;
+
 	private List<NivelEstudios> listaNivelEstudios;
 
-	public SeleccionarTemaView() {
+	private List<Integer> listaValoracion;
+
+	public VotarTemaView() {
 		tema = new Tema();
-		listaTemas = new ArrayList<Tema>();
+		// voto = new Voto();
 		seleccionarTemaController = new SeleccionarTemaController();
+		votarController = new VotarController();
+		listaTemas = new ArrayList<Tema>();
 		listaNivelEstudios = new ArrayList<NivelEstudios>();
+		listaValoracion = new ArrayList<Integer>();
 	}
 
 	public String getErrorMsg() {
@@ -61,27 +70,53 @@ public class SeleccionarTemaView {
 	public void setListaNivelEstudios(List<NivelEstudios> listaNivelEstudios) {
 		this.listaNivelEstudios = listaNivelEstudios;
 	}
-
-	public void update() {
-		System.out.println("UPDATE SELECCIONAR TEMA");
-
-		//listaTemas = new ArrayList<Tema>();
-		listaTemas = seleccionarTemaController.getListaTemas();
-
-		LogManager.getLogger(SeleccionarTemaView.class).debug(
-				"Se accede a la capa de negocio para recuperar temas.");
-
-		listaNivelEstudios = seleccionarTemaController
-				.obtenerListaNivelEstudios();
-		System.out.println(listaNivelEstudios.toString());
+	
+	public List<Integer> getListaValoracion() {
+		return listaValoracion;
 	}
 
-	public String process() {
+	public void setListaValoracion(List<Integer> listaValoracion) {
+		this.listaValoracion = listaValoracion;
+	}
 
+
+	public Voto getVoto() {
+		return voto;
+	}
+
+	public void setVoto(Voto voto) {
+		this.voto = voto;
+	}
+
+	@PostConstruct
+	public void update() {
+		System.out.println("UPDATE SELECCIONAR TEMA");
+		listaTemas = seleccionarTemaController.getListaTemas();
+		listaNivelEstudios = seleccionarTemaController
+				.obtenerListaNivelEstudios();
+		listaValoracion = seleccionarTemaController.getListaValoracion();
+
+	}  
+
+	public String process() {
+		String view = "";
 		System.out.println("PROCESSSSS SELECCIONAR TEMA");
 
-		tema = seleccionarTemaController.getTemaByTitle(tema.getTitulo());
+		if (tema.getTitulo() != null && voto.getId() == null) {
+			tema = seleccionarTemaController.getTemaById(tema.getId());
+			System.out.println("me meto en el IF");
 
-		return "votar";
+			view = "votarTema";
+
+		}
+
+		// tema = seleccionarTemaController.getTemaByTitle(tema.getTitulo());
+		else {
+			votarController.guardarVotacion(voto, tema.getTitulo());
+			view = "home";
+
+		}
+
+		return view;
 	}
 }

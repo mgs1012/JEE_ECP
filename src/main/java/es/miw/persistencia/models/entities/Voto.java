@@ -86,7 +86,7 @@ public class Voto {
 		}
 		
 	    public int getValoracion() {
-			return valoracion;
+			return this.valoracion;
 		}
 
 		public void setValoracion(Integer valoracion) {

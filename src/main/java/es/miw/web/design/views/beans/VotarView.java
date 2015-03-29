@@ -3,9 +3,11 @@ package es.miw.web.design.views.beans;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
-
-import org.apache.logging.log4j.LogManager;
+import javax.faces.bean.ManagedProperty;
+import javax.faces.bean.RequestScoped;
+import javax.faces.bean.SessionScoped;
 
 import es.miw.persistencia.models.entities.Tema;
 import es.miw.persistencia.models.entities.Voto;
@@ -13,6 +15,7 @@ import es.miw.persistencia.models.utils.NivelEstudios;
 import es.miw.web.controllers.VotarController;
 
 @ManagedBean
+@SessionScoped
 public class VotarView {
 
 	private String errorMsg;
@@ -20,7 +23,7 @@ public class VotarView {
 	private Tema tema;
 
 	private Voto voto;
-	
+
 	private List<Voto> votos;
 
 	private List<Tema> listaTemas;
@@ -29,8 +32,12 @@ public class VotarView {
 
 	private List<NivelEstudios> listaNivelEstudios;
 
+
 	public VotarView() {
 		votarController = new VotarController();
+		listaTemas = new ArrayList<Tema>();
+		listaNivelEstudios = new ArrayList<NivelEstudios>();
+		voto = new Voto();
 	}
 
 	public String getErrorMsg() {
@@ -57,6 +64,10 @@ public class VotarView {
 		this.voto = voto;
 	}
 
+	public Voto getVoto() {
+		return voto;
+	}
+
 	public List<NivelEstudios> getListaNivelEstudios() {
 		return listaNivelEstudios;
 	}
@@ -72,16 +83,15 @@ public class VotarView {
 	public void setListaTemas(List<Tema> listaTemas) {
 		this.listaTemas = listaTemas;
 	}
+	
+	 public void update() {
+
+	 }
 
 	public String process() {
-		
-		votarController.guardarVotacion(voto, tema.getTitulo());
 
+		votarController.guardarVotacion(voto, tema.getTitulo());
 		return "home";
-		// } else {
-		// LogManager.getLogger(VotarView.class).debug(
-		// "Se accede a la capa de negocio para registrar votacion: " + voto);
-		// return "home";
-		// }
+
 	}
 }
