@@ -18,20 +18,19 @@
 
 	<form name="formulario" action="/Votaciones/jsp/votar" method="post">
 		<p>
-			Tema seleccionado:<input name="nombreDelTema" type="text" value="${tView.tema.titulo}" hidden/>${tView.tema.titulo}<br/>
-			Pregunta: <input name="pregunta" type="text" value="${tView.tema.pregunta}" hidden />${tView.tema.pregunta}
+			Tema seleccionado:<input name="nombreDelTema" type="text"
+				value="${tView.tema.titulo}" hidden />${tView.tema.titulo}<br />
+			Pregunta: <input name="pregunta" type="text"
+				value="${tView.tema.pregunta}" hidden />${tView.tema.pregunta}
 
 		</p>
 		<p>
-			 Nivel Estudios: <select name="nivelEstudios">
+			Nivel Estudios: <select name="nivelEstudios">
 				<c:forEach var="nivelEstudios" items="${tView.listaNivelEstudios}">
 					<option value="${nivelEstudios}">${nivelEstudios}</option>
 				</c:forEach>
-			</select> 
+			</select>
 		</p>
-<!-- 		<p> -->
-<%-- 			<input name="valoracion" type="text" required />${tView.errorMsg} --%>
-<!-- 		</p> -->
 		<p>
 			Valor votación: <select name="valoracion">
 				<option value="0">0</option>
@@ -48,7 +47,7 @@
 			</select>
 		</p>
 		<p>
-		<input type="submit" value="Enviar votación" />
+			<input type="submit" value="Enviar votación" />
 		</p>
 	</form>
 	<p>

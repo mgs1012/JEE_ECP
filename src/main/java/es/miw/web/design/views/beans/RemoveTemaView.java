@@ -18,7 +18,7 @@ public class RemoveTemaView {
 	private String errorMsg;
 
 	private int codigo;
-	
+
 	private static final int CODIGO_AUTORIZACION = 666;
 
 	private Tema tema;
@@ -54,7 +54,7 @@ public class RemoveTemaView {
 	public void setListaTemas(List<Tema> listaTemas) {
 		this.listaTemas = listaTemas;
 	}
-	
+
 	public int getCodigo() {
 		return codigo;
 	}
@@ -63,13 +63,10 @@ public class RemoveTemaView {
 		this.codigo = codigo;
 	}
 
-
 	public void update() {
 
 		listaTemas = new ArrayList<Tema>();
 		listaTemas = removeController.getListaTemas();
-		// listaTemas.addAll( votarController.getListaTemas());
-
 		LogManager.getLogger(RemoveTemaView.class).debug(
 				"Se accede a la capa de negocio para recuperar temas.");
 
@@ -77,16 +74,10 @@ public class RemoveTemaView {
 
 	public String process() {
 
-		if (this.codigo != CODIGO_AUTORIZACION){
+		if (this.codigo != CODIGO_AUTORIZACION) {
 			this.errorMsg = "Código de autenticación no válido! Inténtelo de nuevo.";
-			System.out.println("ENTRA PROCESS ERROR");
-			System.out.println("El tema " + tema.getTitulo() + "tiene id:" + tema.getId());
-			
-			System.out.println("cod erroneo :" + this.codigo);
 			return "removeTema";
 		} else {
-			System.out.println("El tema " + tema.getTitulo() + "tiene id:" + tema.getId());
-
 			removeController.removeTemaById(tema.getId());
 			return "home";
 		}

@@ -70,7 +70,7 @@ public class VotarTemaView {
 	public void setListaNivelEstudios(List<NivelEstudios> listaNivelEstudios) {
 		this.listaNivelEstudios = listaNivelEstudios;
 	}
-	
+
 	public List<Integer> getListaValoracion() {
 		return listaValoracion;
 	}
@@ -78,7 +78,6 @@ public class VotarTemaView {
 	public void setListaValoracion(List<Integer> listaValoracion) {
 		this.listaValoracion = listaValoracion;
 	}
-
 
 	public Voto getVoto() {
 		return voto;
@@ -90,33 +89,22 @@ public class VotarTemaView {
 
 	@PostConstruct
 	public void update() {
-		System.out.println("UPDATE SELECCIONAR TEMA");
 		listaTemas = seleccionarTemaController.getListaTemas();
 		listaNivelEstudios = seleccionarTemaController
 				.obtenerListaNivelEstudios();
 		listaValoracion = seleccionarTemaController.getListaValoracion();
 
-	}  
+	}
 
 	public String process() {
 		String view = "";
-		System.out.println("PROCESSSSS SELECCIONAR TEMA");
-
 		if (tema.getTitulo() != null && voto.getId() == null) {
 			tema = seleccionarTemaController.getTemaById(tema.getId());
-			System.out.println("me meto en el IF");
-
 			view = "votarTema";
-
-		}
-
-		// tema = seleccionarTemaController.getTemaByTitle(tema.getTitulo());
-		else {
+		} else {
 			votarController.guardarVotacion(voto, tema.getTitulo());
 			view = "home";
-
 		}
-
 		return view;
 	}
 }

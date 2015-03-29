@@ -31,13 +31,13 @@ public class Dispatcher extends HttpServlet {
 	private VotarView votarView;
 
 	private VerVotacionesView verVotosView;
-	
+
 	private SeleccionarTemaView seleccionarTemaView;
 
 	@Override
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
-		
+
 		request.setCharacterEncoding("UTF-8");
 
 		String action = request.getPathInfo().substring(1);
@@ -45,13 +45,6 @@ public class Dispatcher extends HttpServlet {
 		String view;
 
 		switch (action) {
-		/*
-		 * case "votar": VotarView votarview = new VotarView();
-		 * votarview.setPersona(new Votar()); request.setAttribute(action,
-		 * votarview); view = action; break; case "verVotaciones":
-		 * VotacionesView votacionesView = new VotacionesView();
-		 * request.setAttribute(action, votacionesView); view = action; break;
-		 */
 		case "addTema":
 			view = action;
 			break;
@@ -65,16 +58,11 @@ public class Dispatcher extends HttpServlet {
 			view = verVotosView.process();
 			request.setAttribute(action, verVotosView);
 			break;
-/*		case "votar":
-			votarView = new VotarView();
-			request.setAttribute(action, votarView);
-			view = action;
-			break;*/
 		case "seleccionarTema":
 			seleccionarTemaView = new SeleccionarTemaView();
 			request.setAttribute(action, seleccionarTemaView);
 			view = action;
-			break;		
+			break;
 		default:
 			view = "home";
 		}
@@ -89,7 +77,7 @@ public class Dispatcher extends HttpServlet {
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
-		
+
 		String action = request.getPathInfo().substring(1);
 		String view = "home";
 		Tema tema;
@@ -97,7 +85,6 @@ public class Dispatcher extends HttpServlet {
 		switch (action) {
 		case "addTema":
 			tema = new Tema();
-			// tema.setId(Integer.valueOf(request.getParameter("id")));
 			tema.setTitulo(request.getParameter("titulo"));
 			tema.setDescripcion(request.getParameter("descripcion"));
 			tema.setPregunta(request.getParameter("pregunta"));
@@ -111,7 +98,8 @@ public class Dispatcher extends HttpServlet {
 			removeTemaView = new RemoveTemaView();
 			tema.setId(Integer.parseInt(request.getParameter("nombreDelTema")));
 			removeTemaView.setTema(tema);
-			removeTemaView.setCodigo(Integer.parseInt(request.getParameter("codigo")));
+			removeTemaView.setCodigo(Integer.parseInt(request
+					.getParameter("codigo")));
 			request.setAttribute(action, removeTemaView);
 			view = removeTemaView.process();
 			break;
@@ -119,7 +107,7 @@ public class Dispatcher extends HttpServlet {
 		case "votar":
 			tema = new Tema();
 			voto = new Voto();
-			
+
 			voto.setIp(request.getRemoteAddr());
 			System.out.println("IP:" + request.getRemoteAddr());
 			voto.setNivelEstudios(NivelEstudios.valueOf(request
@@ -136,25 +124,15 @@ public class Dispatcher extends HttpServlet {
 			break;
 		case "seleccionarTema":
 			tema = new Tema();
-			seleccionarTemaView = new SeleccionarTemaView();	
+			seleccionarTemaView = new SeleccionarTemaView();
 			tema.setTitulo(request.getParameter("nombreDelTema"));
-			System.out.println("Llega del form: " + request.getParameter("nombreDelTema"));	
+			System.out.println("Llega del form: "
+					+ request.getParameter("nombreDelTema"));
 			seleccionarTemaView.setTema(tema);
 			view = seleccionarTemaView.process();
 			request.setAttribute(action, seleccionarTemaView);
 			break;
-					
-		/*case "verVotaciones":
-			verVotosView = new VerVotacionesView();
-			request.setAttribute(action, verVotosView);
-			view = verVotosView.process();*/
 
-		/*
-		 * case "rol": RolView rolView = new RolView();
-		 * rolView.setRol(request.getParameter("rol"));
-		 * request.setAttribute(action, rolView); view = rolView.process();
-		 * break;
-		 */
 		}
 
 		this.getServletContext()

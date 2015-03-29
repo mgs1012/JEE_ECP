@@ -39,11 +39,7 @@ public class Tema {
     private String pregunta;
     
  public static final String VOTOS = "VOTOS";
-    
 
-    // Relacion unidireccional: 1:0..n
-    // Tema con lista votos. Votos a parte.
-    //@JoinColumn(name = VOTOS)
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<Voto> votos;
 

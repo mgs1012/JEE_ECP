@@ -1,6 +1,5 @@
 package es.miw.web.design.views.beans;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -17,7 +16,7 @@ public class VerVotacionesView {
 	private String errorMsg;
 
 	private Map<String, Integer> numVotosTema;
-	
+
 	private Map<NivelEstudios, Double> mediasVotos;
 
 	private VerVotacionesController verController;
@@ -39,7 +38,7 @@ public class VerVotacionesView {
 	public void setNumVotosTema(Map<String, Integer> numVotosTema) {
 		this.numVotosTema = numVotosTema;
 	}
-	
+
 	public Map<NivelEstudios, Double> getMediasVotos() {
 		return mediasVotos;
 	}
@@ -48,28 +47,19 @@ public class VerVotacionesView {
 		this.mediasVotos = mediasVotos;
 	}
 
-
-	
 	public void update() {
-		//numVotosTema = new HashMap<String, Integer>();
-		
 		numVotosTema = verController.obtenerNumeroVotos();
-		
 		mediasVotos = verController.medias();
-		
-		//votos = new ArrayList<Voto>();
+
 	}
 
 	public String process() {
-		// Comunicar con la capa de negocio usando controlador.
-
 		LogManager.getLogger(VerVotacionesView.class).debug(
 				"Se accede a la capa de negocio para visualizar votaciones: ");
-		
+
 		numVotosTema = verController.obtenerNumeroVotos();
-		System.out.println("El mapa que llega es: " + verController.medias());
 		mediasVotos = verController.medias();
-		
+
 		return "verVotaciones";
 	}
 }

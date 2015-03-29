@@ -3,10 +3,7 @@ package es.miw.web.design.views.beans;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ManagedProperty;
-import javax.faces.bean.RequestScoped;
 import javax.faces.bean.SessionScoped;
 
 import es.miw.persistencia.models.entities.Tema;
@@ -84,10 +81,6 @@ public class VotarView {
 		this.listaTemas = listaTemas;
 	}
 	
-	 public void update() {
-
-	 }
-
 	public String process() {
 
 		votarController.guardarVotacion(voto, tema.getTitulo());

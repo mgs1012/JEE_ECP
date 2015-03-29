@@ -45,8 +45,6 @@ public class GenericDaoJpa<T, ID> implements GenericDao<T, ID> {
         return entity;
     }
 
-    // Cuando en una relación de colección se elimina un miembro de la
-    // colección, se debe borrar de la tabla explicitamente
     @Override
     public void update(T entity) {
         EntityManager entityManager = DaoJpaFactory.getEntityManagerFactory().createEntityManager();

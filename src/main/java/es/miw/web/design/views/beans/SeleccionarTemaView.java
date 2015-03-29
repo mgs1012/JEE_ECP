@@ -63,25 +63,13 @@ public class SeleccionarTemaView {
 	}
 
 	public void update() {
-		System.out.println("UPDATE SELECCIONAR TEMA");
-
-		//listaTemas = new ArrayList<Tema>();
 		listaTemas = seleccionarTemaController.getListaTemas();
-
-		LogManager.getLogger(SeleccionarTemaView.class).debug(
-				"Se accede a la capa de negocio para recuperar temas.");
-
 		listaNivelEstudios = seleccionarTemaController
 				.obtenerListaNivelEstudios();
-		System.out.println(listaNivelEstudios.toString());
 	}
 
 	public String process() {
-
-		System.out.println("PROCESSSSS SELECCIONAR TEMA");
-
 		tema = seleccionarTemaController.getTemaByTitle(tema.getTitulo());
-
 		return "votar";
 	}
 }

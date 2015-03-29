@@ -19,8 +19,6 @@ public class Voto {
 	    public static final String TABLE = "voto";
 
 	    public static final String ID = "ID";
-
-	    //@Generatedvalue -> genera y autoincrementa el valor del id. 
 	    
 	    @Id
 	    @GeneratedValue
@@ -42,20 +40,10 @@ public class Voto {
 	    @Column(name = VALORACION)
 	    private Integer valoracion;
 
-/*	    public static final String TEMA = "TEMA";
-
-	    // Relacion unidireccional: 1:0..n
-
-	    @ManyToOne
-	    @JoinColumn(name = TEMA)
-	    private Tema tema;*/
-
 	    public Voto(String ip, NivelEstudios nivelEstudios, Integer valoracion) {
-	       // this.id = id;
 	        this.ip = ip;
 	        this.nivelEstudios = nivelEstudios;
 	        this.valoracion = valoracion;
-	        //this.tema = tema; 
 	    }
 
 		public Voto() {
@@ -90,7 +78,6 @@ public class Voto {
 		}
 
 		public void setValoracion(Integer valoracion) {
-			//if(valoracion >= 0 && valoracion <= 10 )
 				this.valoracion = valoracion;
 		}
 		
