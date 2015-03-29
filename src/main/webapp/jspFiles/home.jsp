@@ -23,7 +23,7 @@
 		<a href="/Votaciones/jsp/removeTema">Eliminar Tema</a>
 	</p>
 	<p>
-		<a href="/Votaciones/index.html">Página Principal</a>
+		<a href="/Votaciones/index.html"><button style="color:blue">Página Principal</button></a>
 	</p>
 </body>
 </html>
